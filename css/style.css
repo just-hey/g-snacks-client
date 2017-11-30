@@ -11,6 +11,10 @@ body {
   margin: 10px;
 }
 
+.hide {
+  display: none;
+}
+
 /*========================HOMEPAGE*/
 /*NAV*/
 
