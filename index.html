@@ -20,76 +20,11 @@
 
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- MDB template style -->
+    <link href="css/template.css" rel="stylesheet">
 
     <!-- Custom Styles -->
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-
-    <!-- Template styles -->
-    <style rel="stylesheet">
-        /* TEMPLATE STYLES */
-        /* Necessary for full page carousel*/
-
-        html,
-        body {
-            height: 100%;
-        }
-        /* Navigation*/
-
-        .navbar {
-            background-color: transparent;
-        }
-
-        .top-nav-collapse {
-            background-color: #304a74;
-        }
-
-        footer.page-footer {
-            background-color: #304a74;
-        }
-
-        @media only screen and (max-width: 768px) {
-            .navbar {
-                background-color: #4285F4;
-            }
-        }
-
-        .scrolling-navbar {
-            -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
-            -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
-            transition: background .5s ease-in-out, padding .5s ease-in-out;
-        }
-        /* Carousel*/
-
-        .carousel {
-            height: 50%;
-        }
-
-        @media (max-width: 776px) {
-            .carousel {
-                height: 100%;
-            }
-        }
-
-        .carousel-item,
-        .active {
-            height: 100%;
-        }
-
-        .carousel-inner {
-            height: 100%;
-        }
-        /*Caption*/
-
-        .flex-center {
-            color: #fff;
-        }
-        .navbar .btn-group .dropdown-menu a:hover {
-            color: #000 !important;
-        }
-        .navbar .btn-group .dropdown-menu a:active {
-            color: #fff !important;
-        }
-    </style>
 
 <!-- axios -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.0/axios.min.js" charset="utf-8"></script>
@@ -126,12 +61,6 @@
 
     <!--Carousel Wrapper-->
     <div id="carousel-example-3" class="carousel slide carousel-fade white-text" data-ride="carousel" data-interval="false">
-        <!--Indicators-->
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-example-3" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-3" data-slide-to="1"></li>
-        </ol>
-        <!--/.Indicators-->
 
         <!--Slides-->
         <div class="carousel-inner" role="listbox">
@@ -164,41 +93,9 @@
             </div>
             <!--/.First slide-->
 
-            <!-- Second slide -->
-            <div class="carousel-item view hm-black-light" style="background-image: url('https://mdbootstrap.com/img/Photos/Slides/img%20(67).jpg'); background-repeat: no-repeat; background-size: cover;">
-
-                <!-- Caption -->
-                <div class="full-bg-img flex-center white-text">
-                    <ul class="animated fadeIn col-md-12">
-                        <li>
-                            <h1 class="h1-responsive">10 Reasons you should spend winter holiday in mountains </h1>
-                        </li>
-                        <li>
-                            <p>Best atractions and winter sports!</p>
-                        </li>
-                        <li>
-                            <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-info btn-lg" rel="nofollow">Read more</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.Caption -->
-
-            </div>
-            <!--/.Second slide -->
-
         </div>
         <!--/.Slides-->
 
-        <!--Controls-->
-        <a class="carousel-control-prev" href="#carousel-example-3" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel-example-3" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-        <!--/.Controls-->
     </div>
     <!--/.Carousel Wrapper-->
 
@@ -206,9 +103,9 @@
 
     <!--Content-->
     <div class="container">
-        <!-- APPEND SNACK CARDS TO THIS -->
-        <div class="row my-5 all-snacks">
-          
+        <!-- APPEND SNACKS TO THIS -->
+        <div class="row my-5 snack-content">
+
 
         </div>
     </div>
