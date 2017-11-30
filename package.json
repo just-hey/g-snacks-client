@@ -4,12 +4,16 @@
   "description": "Client for Galvanize group projects: snacks",
   "main": "main.js",
   "scripts": {
-    "test": "none"
+    "test": "none",
+    "dev": "live-server"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/KevinUSCU/g-snacks-client"
   },
   "author": "Justin, Kevin, RJ",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  }
 }
