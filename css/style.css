@@ -1,0 +1,22 @@
+/*GENERAL*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0em;
+}
+
+.btn {
+  margin: 10px;
+}
+
+/*========================HOMEPAGE*/
+/*NAV*/
+
+/*SLIDES*/
+
+/*CONTENT: SNACK CARDS*/
+.star {
+  color: #ffc107;
+}
