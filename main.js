@@ -1,6 +1,7 @@
 const baseURL = 'http://localhost:3000/api/snacks'
 
 let allSnacksContainer = document.querySelector('.all-snacks')
+let oneSnackContainer = document.querySelector('.one-snack')
 
 //////////LOAD SNACKS
 function loadSnacks(baseURL){
@@ -13,3 +14,12 @@ function loadSnacks(baseURL){
     })
 }
 loadSnacks(baseURL)
+
+//////////LOAD ONE SNACK
+function justOneSnack(baseURL, id) {
+  return axios.get(`${baseURL}/${id}`)
+    .then(result => {
+      oneSnackContainer.innerHTML = result.data.response
+      // result.data.response
+    })
+}
