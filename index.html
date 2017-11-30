@@ -2,45 +2,55 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>Galvanize Snacks</title>
 
+    <!-- STYLES -->
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet">
     <!-- MDB template style -->
     <link href="css/template.css" rel="stylesheet">
-
     <!-- Custom Styles -->
     <link rel="stylesheet" type="text/css" href="./css/style.css">
+    
+    <!-- SCRIPTS -->
+    <!-- axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.0/axios.min.js" charset="utf-8"></script>
+    <!-- template js -->
+    <script src="./templates/snack-card.js" charset="utf-8"></script>
+    <!-- custom js -->
+    <script defer src="main.js" charset="utf-8"></script>
 
-<!-- axios -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.0/axios.min.js" charset="utf-8"></script>
+    <!-- JQuery -->
+    <script defer type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    
+    <!-- Bootstrap dropdown -->
+    <script defer type="text/javascript" src="js/popper.min.js"></script>
+    <link href="css/mdb.min.css" rel="stylesheet">
 
-<!-- template js -->
-<script src="./templates/snack-card.js" charset="utf-8"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script defer type="text/javascript" src="js/bootstrap.min.js"></script>
 
-<!-- custom js -->
-<script defer src="main.js" charset="utf-8"></script>
+    <!-- MDB core JavaScript -->
+    <script defer type="text/javascript" src="js/mdb.min.js"></script>
 
+    <script>
+        new WOW().init();
+    </script>
 </head>
 
 <body>
-
-
-    <!--Navbar-->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
         <div class="container">
             <a class="navbar-brand" href="#">gSnacks</a>
@@ -57,12 +67,12 @@
             </div>
         </div>
     </nav>
-    <!--/.Navbar-->
+    <!-- /Navbar -->
 
-    <!--Carousel Wrapper-->
+    <!-- Carousel Wrapper -->
     <div id="carousel-example-3" class="carousel slide carousel-fade white-text" data-ride="carousel" data-interval="false">
 
-        <!--Slides-->
+        <!-- Slides -->
         <div class="carousel-inner" role="listbox">
 
             <!-- First slide -->
@@ -88,20 +98,19 @@
                         </li>
                     </ul>
                 </div>
-                <!-- /.Caption -->
-
+                <!-- /Caption -->
             </div>
-            <!--/.First slide-->
+            <!-- /First slide -->
 
         </div>
-        <!--/.Slides-->
+        <!-- /Slides -->
 
     </div>
-    <!--/.Carousel Wrapper-->
+    <!-- /Carousel Wrapper -->
 
     <br>
 
-    <!--Content-->
+    <!-- Content -->
     <div class="container">
         <!-- APPEND SNACKS TO THIS -->
         <div class="row my-5 snack-content">
@@ -109,13 +118,11 @@
 
         </div>
     </div>
-    <!--/.Content-->
+    <!-- /Content -->
 
-
-    <!--Footer-->
+    <!-- Footer -->
     <footer class="page-footer center-on-small-only">
-
-        <!--Call to action-->
+        <!-- Call to action -->
         <div class="call-to-action">
               <h4 class="mb-5">What do your taste buds say?</h4>
             <ul>
@@ -136,30 +143,11 @@
                 </li>
             </ul>
         </div>
-        <!--/.Call to action-->
-
+        <!-- /Call to action -->
     </footer>
-    <!--/.Footer-->
+    <!-- /Footer -->
 
-
-    <!-- SCRIPTS -->
-
-    <!-- JQuery -->
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-
-    <!-- Bootstrap dropdown -->
-    <script type="text/javascript" src="js/popper.min.js"></script>
-
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
-
-    <script>
-        new WOW().init();
-    </script>
-
+    <!-- MODALS -->
     <!-- Signup Modal -->
     <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-notify" role="document">

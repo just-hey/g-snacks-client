@@ -1,4 +1,4 @@
-/*GENERAL*/
+/* General */
 * {
   box-sizing: border-box;
 }
@@ -15,12 +15,7 @@ body {
   display: none;
 }
 
-/*========================HOMEPAGE*/
-/*NAV*/
-
-/*SLIDES*/
-
-/*CONTENT: SNACK CARDS*/
+/* Snack Cards */
 .star {
   color: #ffc107;
 }
