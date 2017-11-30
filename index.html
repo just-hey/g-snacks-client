@@ -10,7 +10,7 @@
     <title>Galvanize Snacks</title>
 
     <!-- Font Awesome -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
@@ -148,8 +148,14 @@
                             <p>Sign up or log in to leave your own reviews!</p>
                         </li>
                         <li>
-                            <a target="_blank" href="https://mdbootstrap.com/getting-started/" class="btn btn-info btn-lg" rel="nofollow">Sign up!</a>
-                            <a target="_blank" href="https://mdbootstrap.com/getting-started/" class="btn btn-default btn-lg" rel="nofollow">Login</a>
+                            <!-- Signup Button trigger modal -->
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#signupModal">
+                                Sign up!
+                            </button>
+                            <!-- Login Button trigger modal -->
+                            <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#loginModal">
+                                Login
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -212,18 +218,28 @@
     <!--Footer-->
     <footer class="page-footer center-on-small-only">
 
-      <!--Call to action-->
-      <div class="call-to-action">
-          <h4 class="mb-5">What do your taste buds say?</h4>
-          <ul>
-              <li>
-                  <h5>Sign up or log in to leave your own reviews!</h5>
-              </li>
-              <li><a target="_blank" href="https://mdbootstrap.com/getting-started/" class="btn btn-info" rel="nofollow">Sign up!</a></li>
-              <li><a target="_blank" href="https://mdbootstrap.com/material-design-for-bootstrap/" class="btn btn-default" rel="nofollow">Log in</a></li>
-          </ul>
-      </div>
-      <!--/.Call to action-->
+        <!--Call to action-->
+        <div class="call-to-action">
+              <h4 class="mb-5">What do your taste buds say?</h4>
+            <ul>
+                <li>
+                    <h5>Sign up or log in to leave your own reviews!</h5>
+                </li>
+                <li>
+                    <!-- Signup Button trigger modal -->
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#signupModal">
+                        Sign up!
+                    </button>
+                </li>
+                <li>
+                    <!-- Login Button trigger modal -->
+                    <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#loginModal">
+                        Login
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <!--/.Call to action-->
 
     </footer>
     <!--/.Footer-->
@@ -247,6 +263,76 @@
         new WOW().init();
     </script>
 
+    <!-- Signup Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signupModalLabel">Sign Up for gSnacks</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="md-form">
+                            <i class="fa fa-user prefix grey-text"></i>
+                            <input type="text" id="signup-firstname" class="form-control">
+                            <label for="signup-firstname">First name</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fa prefix"></i>
+                            <input type="text" id="signup-lastname" class="form-control">
+                            <label for="signup-lastname">Last name</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fa fa-envelope prefix grey-text"></i>
+                            <input type="text" id="signup-email" class="form-control">
+                            <label for="signup-email">Your email</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fa fa-lock prefix grey-text"></i>
+                            <input type="password" id="signup-pass" class="form-control">
+                            <label for="signup-pass">Your password</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="signup-submit" type="button" class="btn btn-info">Create Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Log In to gSnacks</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="md-form">
+                            <i class="fa fa-envelope prefix grey-text"></i>
+                            <input type="text" id="login-email" class="form-control">
+                            <label for="login-email">Your email</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fa fa-lock prefix grey-text"></i>
+                            <input type="password" id="login-pass" class="form-control">
+                            <label for="login-pass">Your password</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="login-submit" type="button" class="btn btn-default">Log In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
