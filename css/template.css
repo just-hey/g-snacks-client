@@ -1,12 +1,6 @@
 /* TEMPLATE STYLES */
-/* Necessary for full page carousel*/
 
-html,
-body {
-    height: 100%;
-}
 /* Navigation*/
-
 .navbar {
     background-color: transparent;
 }
@@ -30,7 +24,12 @@ footer.page-footer {
     -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
     transition: background .5s ease-in-out, padding .5s ease-in-out;
 }
+
 /* Carousel*/
+html,
+body {
+    height: 100%;
+}
 
 .carousel {
     height: 50%;
@@ -42,14 +41,14 @@ footer.page-footer {
     }
 }
 
-.carousel-item,
-.active {
+.carousel-item.active {
     height: 100%;
 }
 
 .carousel-inner {
     height: 100%;
 }
+
 /*Caption*/
 
 .flex-center {
