@@ -1,5 +1,8 @@
 function oneSnackCard(id, name, description, img) {
   return `<!--First row-->
+            <div class="container goHome">
+              <a href="index.html">Back</a>
+            </div>
             <div class="row one-snack-container wow fadeIn" data-wow-delay="0.2s">
                 <!--Featured image-->
                 <div class="col-lg-7">
