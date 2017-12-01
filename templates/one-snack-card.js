@@ -24,5 +24,53 @@ function oneSnackCard(id, name, description, img) {
                 </div>
                 <!--/.Post excerpt-->
             </div>
-            <!--/.First row-->`
+            <!--/.First row-->
+            <!-- REVIEW SECTION -->
+            <div class="row review-container">
+              <div class="col">
+                <a href="#" class="btn review-button">Leave a review</a>
+                <div class="reviews-list mt-5">
+                  <h4 class="mb-1">WHAT OTHERS TASTEBUDS SAY:</h4>
+                  <p>alkfjaslkfj asdlfkjasdlfjkasdlf
+                  aldkfsja slsadlkfj sldfj sldfj sllksdafj asdlfk jsdf lksdf
+                  <!--Stars-->
+                  <div class="reviewer-stars mb-1">
+                    <i class="material-icons star">star</i>
+                    <i class="material-icons star">star</i>
+                    <i class="material-icons star">star</i>
+                    <i class="material-icons star">star_border</i>
+                    <i class="material-icons star">star_border</i>
+                  </div>
+                  <span class="review-author">– Luke Skywalker</span>
+                  </p>
+                  <hr>
+                  <p>kjfdslk fjasdlf jasdlf jsa
+                  sldfkjasdl kfl dslfk alskfdj
+                  sadflk sdf sldkfj s sadlfjsldf
+                  <!--Stars-->
+                  <div class="reviewer-stars mb-1">
+                    <i class="material-icons star">star</i>
+                    <i class="material-icons star">star</i>
+                    <i class="material-icons star">star</i>
+                    <i class="material-icons star">star</i>
+                    <i class="material-icons star">star_border</i>
+                  </div>
+                  <span class="review-author">– Rey</span>
+                  </p>
+                  <hr>
+                  <p>aaarrraagghaa r haraaahhh
+                  <!--Stars-->
+                  <div class="reviewer-stars mb-1">
+                    <i class="material-icons star">star</i>
+                    <i class="material-icons star">star</i>
+                    <i class="material-icons star">star_border</i>
+                    <i class="material-icons star">star_border</i>
+                    <i class="material-icons star">star_border</i>
+                  </div>
+                  <span class="review-author">– Chewbacca</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            `
 }
