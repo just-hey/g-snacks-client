@@ -11,7 +11,38 @@ body {
   margin: 10px;
 }
 
-/* Snack Cards */
+.hide {
+  display: none;
+}
+
+/* Used to darken navbar when hiding carousel*/
+.dark-blue {
+  background-color: #304a74;
+}
+
+/* Keeps one snack view centered */
+.snack-content {
+  justify-content: center;
+}
+
+.one-snack-img {
+  width: 100%;
+}
+
+/* rating stars */
 .star {
   color: #ffc107;
+}
+
+@media (min-width: 992px) {
+  .one-snack-container {
+    margin-top: 3em;
+  }
+}
+
+@media (max-width: 991px) {
+  .one-snack-details {
+    margin: 1em;
+    text-align: center;
+  }
 }
