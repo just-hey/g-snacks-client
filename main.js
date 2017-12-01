@@ -13,15 +13,16 @@ function loadSnacks(baseURL){
       result.data.response.forEach(el => {
         snacksContainer.innerHTML += snackCard(el.id, el.name, el.description, el.img)
       let snackLinks = document.querySelectorAll('.snackLink')
+      let snackCardContainer = document.querySelectorAll('.card')
       for (let i = 0; i < snackLinks.length; i++) {
-        snackLinks[i].addEventListener('click', (e) => {
+        snackCardContainer[i].addEventListener('click', (e) => {
           e.preventDefault()
           let snackID = e.target.getAttribute('data-id')
-          if (e.target.matches('.snackLink')) {
+          // if (e.target.matches('.snackLink')) {
             let thisSnack = result.data.response
             //console.log('im a snack!', thisSnack[i]);
             justOneSnack(baseURL, thisSnack[i].id)
-          }
+          // }
 
         })
       }
