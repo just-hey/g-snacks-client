@@ -9,7 +9,7 @@ function snackCard(id, name, description, img){
                       <!--Card content-->
                       <div class="card-body text-center">
                           <!--Title-->
-                          <h4 class="card-title"><a href="${baseURL}/${id}">${name}</a></h4>
+                          <h4 class="card-title"><a data-id="${id}" class="snackLink" href="${baseURL}/${id}">${name}</a></h4>
                           <!--Text-->
                           <p class="card-text">${description}</p>
                           <!--Stars-->
