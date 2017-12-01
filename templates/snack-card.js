@@ -1,5 +1,5 @@
 function snackCard(id, name, description, img){
-  return `<div class="col-lg-4 mb-4">
+  return `<div class="col-lg-4 mb-4" data-id="${id}">
             <!--Card-->
             <div class="card wow fadeIn" data-wow-delay="0.6s">
                 <!--Card image-->
@@ -18,8 +18,6 @@ function snackCard(id, name, description, img){
                       <i class="material-icons star">star_half</i>
                       <i class="material-icons star">star_border</i>
                     </p>
-                    <!--Button-->
-                    <a href="#" class="btn btn-info" data-id="${id}">Read more</a>
                 </div>
             </div>
             <!--/.Card-->
