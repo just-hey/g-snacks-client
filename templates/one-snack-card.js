@@ -9,14 +9,18 @@ function oneSnackCard(id, name, description, img) {
                     </div>
                 </div>
                 <!--/.Featured image-->
-
                 <!--Post excerpt-->
-                <div class="col-lg-5">
+                <div class="col-lg-5 one-snack-details">
                     <a href="#!"><h2 class="post-title font-bold">${name}</h2></a>
                     <p class="my-4">${description}</p>
-                    <div class="read-more">
-                        <a href="#!" class="btn btn-primary">Learn more</a>
-                    </div>
+                    <!--Stars-->
+                    <p>
+                      <i class="material-icons star">star</i>
+                      <i class="material-icons star">star</i>
+                      <i class="material-icons star">star</i>
+                      <i class="material-icons star">star_half</i>
+                      <i class="material-icons star">star_border</i>
+                    </p>
                 </div>
                 <!--/.Post excerpt-->
             </div>
