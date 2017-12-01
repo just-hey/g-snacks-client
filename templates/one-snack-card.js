@@ -21,6 +21,8 @@ function oneSnackCard(id, name, description, img) {
                       <i class="material-icons star">star_half</i>
                       <i class="material-icons star">star_border</i>
                     </p>
+                    <!--Button-->
+                    <a href="#" class="btn review-button">Leave your own review</a>
                 </div>
                 <!--/.Post excerpt-->
             </div>
@@ -28,9 +30,9 @@ function oneSnackCard(id, name, description, img) {
             <!-- REVIEW SECTION -->
             <div class="row review-container">
               <div class="col">
-                <a href="#" class="btn review-button">Leave a review</a>
-                <div class="reviews-list mt-5">
-                  <h4 class="mb-1">WHAT OTHERS TASTEBUDS SAY:</h4>
+
+                <div class="reviews-list mt-4">
+                  <h4 class="mb-3">WHAT OTHER TASTEBUDS SAY:</h4>
                   <p>alkfjaslkfj asdlfkjasdlfjkasdlf
                   aldkfsja slsadlkfj sldfj sldfj sllksdafj asdlfk jsdf lksdf
                   <!--Stars-->

@@ -15,7 +15,7 @@ a {
   color: #3F51B5!important;
 }
 
-.navbar > div > a {
+.navbar > div > a, .nav-item > a {
   color: #fff!important;
 }
 
@@ -64,6 +64,9 @@ a {
   .one-snack-container {
     margin-top: 3em;
   }
+  .review-container {
+    margin-top: 2em;
+  }
 }
 
 @media (max-width: 991px) {
@@ -73,6 +76,6 @@ a {
   }
   .review-button {
     width: 100%;
-    margin: 0 auto;
+    margin: 0 auto!important;
   }
 }
