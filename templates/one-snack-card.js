@@ -1,10 +1,10 @@
 function oneSnackCard(id, name, description, img) {
   return `<!--First row-->
-            <div class="row mt-5 wow fadeIn" data-wow-delay="0.2s">
+            <div class="row one-snack-container wow fadeIn" data-wow-delay="0.2s">
                 <!--Featured image-->
                 <div class="col-lg-7">
                     <div class="view overlay hm-white-light z-depth-1-half">
-                        <img src="${img}" class="img-fluid" alt="">
+                        <img class="one-snack-img" src="${img}" class="img-fluid" alt="">
                         <div class="mask"></div>
                     </div>
                 </div>

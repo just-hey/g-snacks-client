@@ -25,13 +25,24 @@ body {
   justify-content: center;
 }
 
+.one-snack-img {
+  width: 100%;
+}
+
 /* rating stars */
 .star {
   color: #ffc107;
 }
 
+@media (min-width: 992px) {
+  .one-snack-container {
+    margin-top: 3em;
+  }
+}
+
 @media (max-width: 991px) {
   .one-snack-details {
     margin: 1em;
+    text-align: center;
   }
 }
