@@ -1,0 +1,32 @@
+.navbar {
+  background-color: #000;
+}
+
+.admin-container {
+  padding: 0em;
+  margin-top: 3em;
+}
+
+.admin-tabs {
+  background-color: #e8eaf6;
+  height: 5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.user-tab, .snack-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5em;
+  width: 50%;
+}
+
+.user-tab {
+  background-color: #fff;
+}
+
+td, th {
+  text-align: center;
+}
