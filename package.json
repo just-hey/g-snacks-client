@@ -2,7 +2,7 @@
   "name": "g-snacks-client",
   "version": "0.0.1",
   "description": "Client for Galvanize group projects: snacks",
-  "main": "main.js",
+  "main": "js/main.js",
   "scripts": {
     "test": "none",
     "dev": "live-server"
