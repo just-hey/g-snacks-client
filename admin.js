@@ -21,8 +21,10 @@ let adminTable = document.querySelector('.admin-table')
 //   </tr>`
 // }
 
-function loadSnacks(baseURL){
-  return axios.get(baseURL)
+const snacksURL = 'http://localhost:3000/api/snacks'
+
+function loadAdminSnacks(snacksURL){
+  return axios.get(snacksURL)
   .then(result => {
     result.data.response.forEach(el => {
       adminTable.innerHTML += snackRow(el.id, el.name)
@@ -46,7 +48,7 @@ function loadSnacks(baseURL){
     }
   })
 }
-loadSnacks('http://localhost:3000/api/snacks')
+loadAdminSnacks(snacksURL)
 
 function snackRow(id, name){
   return `<tr data-id="${id}">
@@ -57,9 +59,10 @@ function snackRow(id, name){
 }
 
 function destroySnack(id){
-  return axios.delete(`${baseURL}/${id}`)
+  return axios.delete(`${snacksURL}/${id}`)
   .then(result => {
-    loadSnacks('http://localhost:3000/api/snacks')
+    adminTable.innerHTML = ""
+    return loadAdminSnacks(snacksURL)
   })
   .catch(err => {
     console.log(err);
@@ -67,7 +70,7 @@ function destroySnack(id){
 }
 
 function editSnack(id, body){
-  return axios.put(`${baseURL}/${id}`)
+  return axios.put(`${snacksURL}/${id}`)
   .then(result => {
     //do stuff
     console.log(result);

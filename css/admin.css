@@ -39,6 +39,7 @@ td, th {
 
 .delete-user, .delete-snack {
   color: #e53935;
+  cursor: pointer;
 }
 
 .toggle-admin {
@@ -47,6 +48,7 @@ td, th {
 
 .is-admin, .edit-snack {
   color: #007bff;
+  cursor: pointer;
 }
 
 
