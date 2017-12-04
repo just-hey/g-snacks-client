@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:3000/api/snacks'
+const baseURL = 'http://localhost:3000/api'
 
 let navBar = document.querySelector('.navbar')
 let carouselContainer = document.querySelector('.carousel')
@@ -8,7 +8,7 @@ let footerContainer = document.querySelector('.page-footer')
 //////////LOAD ALL SNACKS
 function loadSnacks(baseURL){
 
-  return axios.get(baseURL)
+  return axios.get(`${baseURL}/snacks`)
     .then(result => {
       result.data.response.forEach(el => {
         snacksContainer.innerHTML += snackCard(el.id, el.name, el.description, el.img)
@@ -33,7 +33,7 @@ loadSnacks(baseURL)
 
 //////////LOAD ONE SNACK
 function justOneSnack(baseURL, id) {
-  return axios.get(`${baseURL}/${id}`)
+  return axios.get(`${baseURL}/snacks/${id}`)
     .then(result => {
       //console.log('this!!!', result.data.response);
       let thisSnack = result.data.response
