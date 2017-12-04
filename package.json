@@ -15,5 +15,8 @@
   "license": "ISC",
   "devDependencies": {
     "live-server": "^1.2.0"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^8.1.0"
   }
 }
