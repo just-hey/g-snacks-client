@@ -25,6 +25,7 @@ if (snacksUserToken) {
 
 function logout() {
   localStorage.removeItem('snacksUserToken')
+  snacksUser = null
   snacksUserToken = null
   window.location='index.html'
 }
