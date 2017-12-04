@@ -29,7 +29,7 @@ function loadSnacks(baseURL){
       })
     })
 }
-//loadSnacks(baseURL)
+loadSnacks(baseURL)
 
 //////////LOAD ONE SNACK
 function justOneSnack(baseURL, id) {
