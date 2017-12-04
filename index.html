@@ -24,11 +24,6 @@
     <!-- SCRIPTS -->
     <!-- axios -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.0/axios.min.js" charset="utf-8"></script>
-    <!-- template js -->
-    <script src="./templates/snack-card.js" charset="utf-8"></script>
-    <script src="./templates/one-snack-card.js" charset="utf-8"></script>
-    <!-- custom js -->
-    <script defer src="main.js" charset="utf-8"></script>
     <!-- JQuery -->
     <script defer type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap dropdown -->
@@ -38,6 +33,12 @@
     <script defer type="text/javascript" src="js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script defer type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- template js -->
+    <script type="text/javascript" src="./templates/snack-card.js"></script>
+    <script type="text/javascript" src="./templates/one-snack-card.js"></script>
+    <!-- custom js -->
+    <script defer type="text/javascript" src="main.js"></script>
+    <script defer type="text/javascript" src="./js/logins.js"></script>
 
     <!-- Next script command may be unneccessary
     <script>
@@ -173,8 +174,11 @@
                         </div>
                         <div class="md-form">
                             <i class="material-icons prefix grey-text animated slideInDown">lock</i>
-                            <input type="password" id="signup-pass" class="form-control">
+                            <input type="password" id="signup-password" class="form-control">
                             <label for="signup-pass">Your password</label>
+                        </div>
+                        <div id="signup-messagebox">
+                            <!-- Messages go here -->
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -203,8 +207,11 @@
                         </div>
                         <div class="md-form">
                             <i class="material-icons prefix grey-text animated slideInDown">lock</i>
-                            <input type="password" id="login-pass" class="form-control">
+                            <input type="password" id="login-password" class="form-control">
                             <label for="login-pass">Your password</label>
+                        </div>
+                        <div id="login-messagebox">
+                            <!-- Messages go here -->
                         </div>
                     </div>
                     <div class="modal-footer">
