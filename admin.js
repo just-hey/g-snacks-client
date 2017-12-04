@@ -30,7 +30,8 @@ function loadSnacks(baseURL){
     let deleteSnack = document.querySelectorAll('.delete-snack')
     for (var i = 0; i < deleteSnack.length; i++) {
       deleteSnack[i].addEventListener('click', (e) => {
-        console.log(e.target.getAttribute('data-id'));
+        let thisId = e.target.getAttribute('data-id')
+        destroySnack(thisId)
       })
     }
   })
@@ -45,9 +46,12 @@ function snackRow(id, name){
   </tr>`
 }
 
-// function deleteSnack(id){
-//   return axios.delete(baseURL)
-//   .then(result => {
-//     console.log(result);
-//   })
-// }
+function destroySnack(id){
+  return axios.delete(`${baseURL}/${id}`)
+  .then(result => {
+    loadSnacks('http://localhost:3000/api/snacks')
+  })
+  .catch(err => {
+    console.log(err);
+  })
+}
