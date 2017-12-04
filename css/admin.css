@@ -1,0 +1,61 @@
+.navbar {
+  background-color: #000;
+}
+
+.admin-container {
+  padding: 0em;
+  max-width: 100%;
+}
+
+.admin-tabs {
+  background-color: #3f51b5;
+  height: 5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 4em;
+}
+
+.admin-tabs > a {
+  color: #fff!important;
+}
+
+.user-tab, .snack-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3em;
+  width: 40%;
+  max-width: 20em;
+}
+
+.user-tab {
+  background-color: #7986cb;
+}
+
+td, th {
+  text-align: center;
+}
+
+.delete-user, .delete-snack {
+  color: #e53935;
+  cursor: pointer;
+}
+
+.toggle-admin {
+  color: #e0e0e0;
+}
+
+.is-admin, .edit-snack {
+  color: #007bff;
+  cursor: pointer;
+}
+
+
+
+
+@media (max-width: 599px){
+  .admin-tabs {
+    margin-top: 3.5em;
+  }
+}
