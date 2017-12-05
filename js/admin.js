@@ -13,6 +13,7 @@ snackTab.addEventListener('click', (e) => {
     snackTab.classList.add('active-tab')
     userTab.classList.remove('active-tab')
   }
+  loadAdminSnacks(snacksURL)
 })
 
 userTab.addEventListener('click', (e) => {
@@ -20,11 +21,18 @@ userTab.addEventListener('click', (e) => {
     userTab.classList.add('active-tab')
     snackTab.classList.remove('active-tab')
   }
-  loadUsers()
+  loadUsers(usersURL)
 })
 
-//////////LOAD USERS 
-function loadUsers(){
+//////////LOAD USERS
+function loadUsers(usersURL){
+
+  // return axios.get(usersURL)
+  // .then(result => {
+  //   console.log(result.data.response);
+  // })
+  // .catch((err) => {console.log(err)})
+
   adminTableHeader.innerHTML = ""
   adminTableHeader.innerHTML =
   `<tr>
@@ -38,21 +46,58 @@ function loadUsers(){
   `<tr>
     <td scope="row"><i class="material-icons delete-user">close</i></td>
     <td>JanelleMonae</td>
-    <td><i class="material-icons toggle-admin">account_box</i></td>
+    <td><i class="material-icons not-admin">account_box</i></td>
+  </tr>
+  <tr>
+    <td scope="row"><i class="material-icons delete-user">close</i></td>
+    <td>LukeSkywalkerz</td>
+    <td><i class="material-icons not-admin">account_box</i></td>
+  </tr>
+  <tr>
+    <td scope="row"><i class="material-icons delete-user">close</i></td>
+    <td>Rey</td>
+    <td><i class="material-icons not-admin">account_box</i></td>
+  </tr>
+  <tr>
+    <td scope="row"><i class="material-icons delete-user">close</i></td>
+    <td>Sabine Wren</td>
+    <td><i class="material-icons not-admin">account_box</i></td>
+  </tr>
+  <tr>
+    <td scope="row"><i class="material-icons delete-user">close</i></td>
+    <td>Hera Syndulla</td>
+    <td><i class="material-icons not-admin">account_box</i></td>
+  </tr>
+  <tr>
+    <td scope="row"><i class="material-icons delete-user">close</i></td>
+    <td>Captain Phasma</td>
+    <td><i class="material-icons is-admin">account_box</i></td>
   </tr>`
 }
+
+
+// function userTable(id, name){
+//   return `<tr>
+//     <td scope="row" data-id=${id}><i class="material-icons delete-user">close</i></td>
+//     <td>${name}</td>
+//     <td><i class="material-icons toggle-admin">account_box</i></td>
+//   </tr>`
+// }
 
 
 //////////LOAD SNACKS
 function loadAdminSnacks(snacksURL){
   return axios.get(snacksURL)
   .then(result => {
+    adminTableHeader.innerHTML = ""
     adminTableHeader.innerHTML =
     `<tr>
       <th>Delete</th>
       <th>Snack</th>
       <th>Edit</th>
     </tr>`
+
+    adminTable.innerHTML = ""
     result.data.response.forEach(el => {
       adminTable.innerHTML += snackRow(el.id, el.name)
     })
@@ -82,6 +127,7 @@ function loadAdminSnacks(snacksURL){
       })
     }
   })
+  .catch((err) => {console.log(err)})
 }
 loadAdminSnacks(snacksURL)
 

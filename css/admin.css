@@ -54,7 +54,7 @@ td, th {
   cursor: pointer;
 }
 
-.toggle-admin {
+.not-admin {
   color: #e0e0e0;
 }
 
