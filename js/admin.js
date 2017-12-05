@@ -1,31 +1,58 @@
 const usersURL = 'http://localhost:3000/api/users'
-
-let adminTable = document.querySelector('.admin-table')
-
-///////////LOAD ALL USERS
-// function loadUsers(usersURL){
-//
-//   return axios.get(usersURL)
-//     .then(result => {
-//       console.log(result.data);
-//     })
-//
-// }
-// loadUsers(usersURL)
-
-// function userTable(id, name){
-//   return `<tr>
-//     <td scope="row" data-id=${id}><i class="material-icons delete-user">close</i></td>
-//     <td>${name}</td>
-//     <td><i class="material-icons toggle-admin">account_box</i></td>
-//   </tr>`
-// }
-
 const snacksURL = 'http://localhost:3000/api/snacks'
 
+let adminTable = document.querySelector('.admin-table')
+let adminTableHeader = document.querySelector('.admin-table-header')
+
+/////ADMIN TABS
+let snackTab = document.querySelector('.snack-tab')
+let userTab = document.querySelector('.user-tab')
+
+snackTab.addEventListener('click', (e) => {
+  if(!snackTab.classList.contains('active-tab')){
+    snackTab.classList.add('active-tab')
+    userTab.classList.remove('active-tab')
+  }
+})
+
+userTab.addEventListener('click', (e) => {
+  if(!userTab.classList.contains('active-tab')){
+    userTab.classList.add('active-tab')
+    snackTab.classList.remove('active-tab')
+  }
+  loadUsers()
+})
+
+//////////LOAD USERS 
+function loadUsers(){
+  adminTableHeader.innerHTML = ""
+  adminTableHeader.innerHTML =
+  `<tr>
+    <th>Delete</th>
+    <th>Username</th>
+    <th>Admin</th>
+  </tr>`
+
+  adminTable.innerHTML = ""
+  adminTable.innerHTML =
+  `<tr>
+    <td scope="row"><i class="material-icons delete-user">close</i></td>
+    <td>JanelleMonae</td>
+    <td><i class="material-icons toggle-admin">account_box</i></td>
+  </tr>`
+}
+
+
+//////////LOAD SNACKS
 function loadAdminSnacks(snacksURL){
   return axios.get(snacksURL)
   .then(result => {
+    adminTableHeader.innerHTML =
+    `<tr>
+      <th>Delete</th>
+      <th>Snack</th>
+      <th>Edit</th>
+    </tr>`
     result.data.response.forEach(el => {
       adminTable.innerHTML += snackRow(el.id, el.name)
     })
@@ -43,7 +70,15 @@ function loadAdminSnacks(snacksURL){
       editSnack[i].addEventListener('click', (e) => {
         let thisId = e.target.getAttribute('data-id')
         console.log(thisId);
-        //open modal window with form to edit
+        result.data.response.forEach(el => {
+          if(el.id === thisId){
+            let name = el.name
+            let description = el.description
+            let img = el.img
+          }
+        })
+        //edit form
+
       })
     }
   })
