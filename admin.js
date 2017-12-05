@@ -54,7 +54,7 @@ function snackRow(id, name){
   return `<tr data-id="${id}">
     <td scope="row"><i class="material-icons delete-snack" data-id="${id}">close</i></td>
     <td>${name}</td>
-    <td><i class="material-icons edit-snack" data-id="${id}">mode_edit</i></td>
+    <td><i class="material-icons edit-snack" data-id="${id}" data-toggle="modal" data-target="#editSnackModal">mode_edit</i></td>
   </tr>`
 }
 
