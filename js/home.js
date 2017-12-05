@@ -1,9 +1,6 @@
-const baseURL = 'http://localhost:3000/api'
-
-let navBar = document.querySelector('.navbar')
-let carouselContainer = document.querySelector('.carousel')
-let snacksContainer = document.querySelector('.snack-content')
-let footerContainer = document.querySelector('.page-footer')
+const carouselContainer = document.querySelector('.carousel')
+const snacksContainer = document.querySelector('.snack-content')
+const footerContainer = document.querySelector('.page-footer')
 
 //////////LOAD ALL SNACKS
 function loadSnacks(baseURL){
