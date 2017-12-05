@@ -9,6 +9,7 @@ window.snacksUser = null
 // Check for and get currently logged in user
 window.snacksUserToken = localStorage.getItem('snacksUserToken')
 // If user not logged in, redirect to main page
+// RJ!!! If you're getting redirected during dev, comment out this next line!
 if (!snacksUserToken && window.location.pathname !== '/index.html') window.location='index.html'
 // If user is logged in, get their user data
 if (snacksUserToken) {
