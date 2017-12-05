@@ -1,17 +1,80 @@
 const usersURL = 'http://localhost:3000/api/users'
+const snacksURL = 'http://localhost:3000/api/snacks'
 
 let adminTable = document.querySelector('.admin-table')
+let adminTableHeader = document.querySelector('.admin-table-header')
 
-///////////LOAD ALL USERS
-// function loadUsers(usersURL){
-//
-//   return axios.get(usersURL)
-//     .then(result => {
-//       console.log(result.data);
-//     })
-//
-// }
-// loadUsers(usersURL)
+/////ADMIN TABS
+let snackTab = document.querySelector('.snack-tab')
+let userTab = document.querySelector('.user-tab')
+
+snackTab.addEventListener('click', (e) => {
+  if(!snackTab.classList.contains('active-tab')){
+    snackTab.classList.add('active-tab')
+    userTab.classList.remove('active-tab')
+  }
+  loadAdminSnacks(snacksURL)
+})
+
+userTab.addEventListener('click', (e) => {
+  if(!userTab.classList.contains('active-tab')){
+    userTab.classList.add('active-tab')
+    snackTab.classList.remove('active-tab')
+  }
+  loadUsers(usersURL)
+})
+
+//////////LOAD USERS
+function loadUsers(usersURL){
+
+  // return axios.get(usersURL)
+  // .then(result => {
+  //   console.log(result.data.response);
+  // })
+  // .catch((err) => {console.log(err)})
+
+  adminTableHeader.innerHTML = ""
+  adminTableHeader.innerHTML =
+  `<tr>
+    <th>Delete</th>
+    <th>Username</th>
+    <th>Admin</th>
+  </tr>`
+
+  adminTable.innerHTML = ""
+  adminTable.innerHTML =
+  `<tr>
+    <td scope="row"><i class="material-icons delete-user">close</i></td>
+    <td>JanelleMonae</td>
+    <td><i class="material-icons not-admin">account_box</i></td>
+  </tr>
+  <tr>
+    <td scope="row"><i class="material-icons delete-user">close</i></td>
+    <td>LukeSkywalkerz</td>
+    <td><i class="material-icons not-admin">account_box</i></td>
+  </tr>
+  <tr>
+    <td scope="row"><i class="material-icons delete-user">close</i></td>
+    <td>Rey</td>
+    <td><i class="material-icons not-admin">account_box</i></td>
+  </tr>
+  <tr>
+    <td scope="row"><i class="material-icons delete-user">close</i></td>
+    <td>Sabine Wren</td>
+    <td><i class="material-icons not-admin">account_box</i></td>
+  </tr>
+  <tr>
+    <td scope="row"><i class="material-icons delete-user">close</i></td>
+    <td>Hera Syndulla</td>
+    <td><i class="material-icons not-admin">account_box</i></td>
+  </tr>
+  <tr>
+    <td scope="row"><i class="material-icons delete-user">close</i></td>
+    <td>Captain Phasma</td>
+    <td><i class="material-icons is-admin">account_box</i></td>
+  </tr>`
+}
+
 
 // function userTable(id, name){
 //   return `<tr>
@@ -21,11 +84,20 @@ let adminTable = document.querySelector('.admin-table')
 //   </tr>`
 // }
 
-const snacksURL = 'http://localhost:3000/api/snacks'
 
+//////////LOAD SNACKS
 function loadAdminSnacks(snacksURL){
   return axios.get(snacksURL)
   .then(result => {
+    adminTableHeader.innerHTML = ""
+    adminTableHeader.innerHTML =
+    `<tr>
+      <th>Delete</th>
+      <th>Snack</th>
+      <th>Edit</th>
+    </tr>`
+
+    adminTable.innerHTML = ""
     result.data.response.forEach(el => {
       adminTable.innerHTML += snackRow(el.id, el.name)
     })
@@ -43,10 +115,19 @@ function loadAdminSnacks(snacksURL){
       editSnack[i].addEventListener('click', (e) => {
         let thisId = e.target.getAttribute('data-id')
         console.log(thisId);
-        //open modal window with form to edit
+        result.data.response.forEach(el => {
+          if(el.id === thisId){
+            let name = el.name
+            let description = el.description
+            let img = el.img
+          }
+        })
+        //edit form
+
       })
     }
   })
+  .catch((err) => {console.log(err)})
 }
 loadAdminSnacks(snacksURL)
 
@@ -54,7 +135,7 @@ function snackRow(id, name){
   return `<tr data-id="${id}">
     <td scope="row"><i class="material-icons delete-snack" data-id="${id}">close</i></td>
     <td>${name}</td>
-    <td><i class="material-icons edit-snack" data-id="${id}">mode_edit</i></td>
+    <td><i class="material-icons edit-snack" data-id="${id}" data-toggle="modal" data-target="#editSnackModal">mode_edit</i></td>
   </tr>`
 }
 

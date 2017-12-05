@@ -34,7 +34,7 @@
     <!-- MDB core JavaScript -->
     <script defer type="text/javascript" src="js/modules/mdb.min.js"></script>
     <!-- Page specific js -->
-    <script defer type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/templates/edit-snack-form.js"></script>
     <script defer type="text/javascript" src="js/admin.js"></script>
 
     <!-- Next script command may be unneccessary
@@ -67,51 +67,21 @@
         <div class="col">
 
           <div class="admin-tabs">
+            <a class="snack-tab active-tab"><i class="material-icons mr-2">restaurant</i> Edit Snacks</a>
             <a class="user-tab"><i class="material-icons mr-2">person</i> Edit Users</a>
-            <a class="snack-tab"><i class="material-icons mr-2">restaurant</i> Edit Snacks</a>
+
           </div>
-<!-- add, edit, delete -->
+
           <table class="table mt-3">
-            <thead>
-              <tr>
-                <th>Delete</th>
-                <th>Snack</th>
-                <th>Edit</th>
-              </tr>
+            <!-- APPEND table header titles to this -->
+            <thead class="admin-table-header">
+
             </thead>
             <!-- APPEND USERS AND SNACKS TO THIS -->
             <tbody class="admin-table">
 
             </tbody>
           </table>
-
-
-          <!-- <table class="table mt-3">
-            <thead>
-              <tr>
-                <th>Delete</th>
-                <th>Username</th>
-                <th>Admin</th>
-              </tr>
-            </thead>
-            <tbody class="user-list">
-              <tr>
-                <td scope="row"><i class="material-icons delete-user">close</i></td>
-                <td>JanelleMonae</td>
-                <td><i class="material-icons toggle-admin">account_box</i></td>
-              </tr>
-              <tr>
-                <td scope="row"><i class="material-icons delete-user">close</i></td>
-                <td>LarrytheBird</td>
-                <td><i class="material-icons toggle-admin">account_box</i></td>
-              </tr>
-              <tr>
-                <td scope="row"><i class="material-icons delete-user">close</i></td>
-                <td>LukeSkywalkerz</td>
-                <td><i class="material-icons toggle-admin">account_box</i></td>
-              </tr>
-            </tbody>
-          </table> -->
 
         </div>
       </div>

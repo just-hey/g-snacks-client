@@ -29,8 +29,20 @@
   max-width: 20em;
 }
 
-.user-tab {
+.active-tab {
   background-color: #7986cb;
+}
+
+.snack-tab, .user-tab {
+  transition: 0.3s;
+}
+
+.snack-tab:hover, .user-tab:hover {
+  background-color: #909de0;
+}
+
+.snack-tab:active, .user-tab:active {
+  background-color: #9fa8da;
 }
 
 td, th {
@@ -42,7 +54,7 @@ td, th {
   cursor: pointer;
 }
 
-.toggle-admin {
+.not-admin {
   color: #e0e0e0;
 }
 
