@@ -114,16 +114,20 @@ function loadAdminSnacks(snacksURL){
     for (var i = 0; i < editSnack.length; i++) {
       editSnack[i].addEventListener('click', (e) => {
         let thisId = e.target.getAttribute('data-id')
-        console.log(thisId);
-        result.data.response.forEach(el => {
-          if(el.id === thisId){
-            let name = el.name
-            let description = el.description
-            let img = el.img
-          }
-        })
-        //edit form
+        //get associated info for this one snack
+        return getOneSnack(thisId)
+        .then(result => {
+          //locate form inputs in DOM
+          let nameValue = document.querySelector('#editsnack-name')
+          let descriptionValue = document.querySelector('#editsnack-description')
+          let imageValue = document.querySelector('#editsnack-imageURL')
 
+          //add values
+          nameValue.setAttribute('value', result.name)
+          descriptionValue.setAttribute('value', result.description)
+          imageValue.setAttribute('value', result.img)
+          console.log(result);
+        })
       })
     }
   })
@@ -137,6 +141,14 @@ function snackRow(id, name){
     <td>${name}</td>
     <td><i class="material-icons edit-snack" data-id="${id}" data-toggle="modal" data-target="#editSnackModal">mode_edit</i></td>
   </tr>`
+}
+
+function getOneSnack(id){
+  return axios.get(`${snacksURL}/${id}`)
+  .then(result => {
+    return result.data.response
+  })
+  .catch((err) => {console.log(err)})
 }
 
 function destroySnack(id){
