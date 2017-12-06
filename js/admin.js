@@ -101,12 +101,32 @@ function loadAdminSnacks(snacksURL){
 
           //LISTEN for save
           let saveEdit = document.querySelector('.save-edit')
+          saveEdit.addEventListener('click', (e) => {
+            let saveId = e.target.getAttribute('data-id')
 
+            return getOneSnack(saveId)
+            .then(result => {
+              //assign body to new values
+              let snackNameValue = document.querySelector('#snack-name').value
+              // let snackDescriptionValue = document.querySelector('#snack-description').textContent
+              let snackImageValue = document.querySelector('#snack-image')
+
+              let body = {name: snackNameValue, img: snackImageValue}
+              return axios.put(`${snacksURL}/${saveId}`, body)
+              .then(result => {
+                adminTable.innerHTML = ""
+                loadAdminSnacks(snacksURL)
+              })
+              .catch(err => {console.log(err)})
+
+            })
+            // //get values
+            // editSnack(id, body)
+          })
 
           //LISTEN for cancel
           let cancelEdit = document.querySelector('.cancel')
           cancelEdit.addEventListener('click', (e) => {
-            console.log("cancel edit");
             adminTable.innerHTML = ""
             loadAdminSnacks(snacksURL)
           })
