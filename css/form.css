@@ -1,0 +1,54 @@
+.edit-form {
+  margin: 3em auto;
+  max-width: 600px;
+}
+
+label {
+  margin-left: 0.5em;
+}
+
+input[type="text"], textarea {
+  background-color: #eeeeee!important;
+  border: none!important;
+  padding: 0.5em;
+}
+
+input {
+  width: 98%!important;
+}
+
+textarea {
+  width: 100%;
+}
+
+.save-cancel-buttons {
+  display: flex;
+  width: 100%;
+}
+
+.save-edit, .save-new, .cancel {
+  width: 50%;
+  height: 4em;
+  border: none;
+  text-transform: uppercase;
+  color: #fff;
+  transition: 0.5s;
+}
+
+.save-edit, .save-new {
+  background-color: #4caf50;
+  margin-left: 0.5em;
+}
+
+.save-edit:hover, .save-new:hover {
+  background-color: #66bb6a;
+}
+
+.cancel {
+  background-color: #9e9e9e;
+  margin-right: 0.5em;
+}
+
+.cancel:hover {
+  background-color: #bdbdbd;
+}

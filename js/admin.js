@@ -1,13 +1,12 @@
 const usersURL = 'http://localhost:3000/api/users'
 const snacksURL = 'http://localhost:3000/api/snacks'
 
+let snackTab = document.querySelector('.snack-tab')
+let userTab = document.querySelector('.user-tab')
 let adminTable = document.querySelector('.admin-table')
 let adminTableHeader = document.querySelector('.admin-table-header')
 
-/////ADMIN TABS
-let snackTab = document.querySelector('.snack-tab')
-let userTab = document.querySelector('.user-tab')
-
+/////ADMIN TABS - toggle view and style
 snackTab.addEventListener('click', (e) => {
   if(!snackTab.classList.contains('active-tab')){
     snackTab.classList.add('active-tab')
@@ -26,13 +25,7 @@ userTab.addEventListener('click', (e) => {
 
 //////////LOAD USERS
 function loadUsers(usersURL){
-
-  // return axios.get(usersURL)
-  // .then(result => {
-  //   console.log(result.data.response);
-  // })
-  // .catch((err) => {console.log(err)})
-
+  //change table header
   adminTableHeader.innerHTML = ""
   adminTableHeader.innerHTML =
   `<tr>
@@ -40,7 +33,7 @@ function loadUsers(usersURL){
     <th>Username</th>
     <th>Admin</th>
   </tr>`
-
+  //placeholder html -!! will be dynamic
   adminTable.innerHTML = ""
   adminTable.innerHTML =
   `<tr>
@@ -48,92 +41,9 @@ function loadUsers(usersURL){
     <td>JanelleMonae</td>
     <td><i class="material-icons not-admin">account_box</i></td>
   </tr>
-  <tr>
-    <td scope="row"><i class="material-icons delete-user">close</i></td>
-    <td>LukeSkywalkerz</td>
-    <td><i class="material-icons not-admin">account_box</i></td>
-  </tr>
-  <tr>
-    <td scope="row"><i class="material-icons delete-user">close</i></td>
-    <td>Rey</td>
-    <td><i class="material-icons not-admin">account_box</i></td>
-  </tr>
-  <tr>
-    <td scope="row"><i class="material-icons delete-user">close</i></td>
-    <td>Sabine Wren</td>
-    <td><i class="material-icons not-admin">account_box</i></td>
-  </tr>
-  <tr>
-    <td scope="row"><i class="material-icons delete-user">close</i></td>
-    <td>Hera Syndulla</td>
-    <td><i class="material-icons not-admin">account_box</i></td>
-  </tr>
-  <tr>
-    <td scope="row"><i class="material-icons delete-user">close</i></td>
-    <td>Captain Phasma</td>
-    <td><i class="material-icons is-admin">account_box</i></td>
-  </tr>`
+  `
 }
 
-
-// function userTable(id, name){
-//   return `<tr>
-//     <td scope="row" data-id=${id}><i class="material-icons delete-user">close</i></td>
-//     <td>${name}</td>
-//     <td><i class="material-icons toggle-admin">account_box</i></td>
-//   </tr>`
-// }
-
-
-//////////LOAD SNACKS
-function loadAdminSnacks(snacksURL){
-  return axios.get(snacksURL)
-  .then(result => {
-    adminTableHeader.innerHTML = ""
-    adminTableHeader.innerHTML =
-    `<tr>
-      <th>Delete</th>
-      <th>Snack</th>
-      <th>Edit</th>
-    </tr>`
-
-    adminTable.innerHTML = ""
-    result.data.response.forEach(el => {
-      adminTable.innerHTML += snackRow(el.id, el.name)
-    })
-
-    let deleteSnack = document.querySelectorAll('.delete-snack')
-    for (var i = 0; i < deleteSnack.length; i++) {
-      deleteSnack[i].addEventListener('click', (e) => {
-        let thisId = e.target.getAttribute('data-id')
-        destroySnack(thisId)
-      })
-    }
-
-    let editSnack = document.querySelectorAll('.edit-snack')
-    for (var i = 0; i < editSnack.length; i++) {
-      editSnack[i].addEventListener('click', (e) => {
-        let thisId = e.target.getAttribute('data-id')
-        //get associated info for this one snack
-        return getOneSnack(thisId)
-        .then(result => {
-          //locate form inputs in DOM
-          let nameValue = document.querySelector('#editsnack-name')
-          let descriptionValue = document.querySelector('#editsnack-description')
-          let imageValue = document.querySelector('#editsnack-imageURL')
-
-          //add values
-          nameValue.setAttribute('value', result.name)
-          descriptionValue.setAttribute('value', result.description)
-          imageValue.setAttribute('value', result.img)
-          console.log(result);
-        })
-      })
-    }
-  })
-  .catch((err) => {console.log(err)})
-}
-loadAdminSnacks(snacksURL)
 
 function snackRow(id, name){
   return `<tr data-id="${id}">
@@ -143,6 +53,154 @@ function snackRow(id, name){
   </tr>`
 }
 
+//////////LOAD SNACKS
+function loadAdminSnacks(snacksURL){
+  return axios.get(snacksURL)
+  .then(result => {
+    //change table header
+    adminTableHeader.innerHTML = ""
+    adminTableHeader.innerHTML =
+    `<tr>
+      <th>Delete</th>
+      <th>Snack</th>
+      <th>Edit</th>
+    </tr>`
+
+    //add rows
+    adminTable.innerHTML = ""
+    result.data.response.forEach(el => {
+      adminTable.innerHTML += snackRow(el.id, el.name)
+    })
+
+    //LISTEN for delete click
+    //!! should add "are you sure?" messaging
+    let deleteSnack = document.querySelectorAll('.delete-snack')
+    for (var i = 0; i < deleteSnack.length; i++) {
+      deleteSnack[i].addEventListener('click', (e) => {
+        let thisId = e.target.getAttribute('data-id')
+        destroySnack(thisId)
+      })
+    }
+
+    //LISTEN for edit click
+    let editSnack = document.querySelectorAll('.edit-snack')
+    for (var i = 0; i < editSnack.length; i++) {
+      editSnack[i].addEventListener('click', (e) => {
+        let thisId = e.target.getAttribute('data-id')
+        //get associated info for this one snack
+        return getOneSnack(thisId)
+        .then(result => {
+          let editFormDiv = document.querySelector('.edit-form')
+          //populate edit form
+          adminTableHeader.innerHTML = ""
+          adminTable.innerHTML = ""
+          addSnackButton.classList.add('hide')
+          adminTableHeader.innerHTML = editSnackForm(result.id, result.name, result.description, result.img)
+
+          //LISTEN for save
+          let saveEdit = document.querySelector('.save-edit')
+          saveEdit.addEventListener('click', (e) => {
+            let saveId = e.target.getAttribute('data-id')
+
+            return getOneSnack(saveId)
+            .then(result => {
+              //assign body to new values
+              let snackNameValue = document.querySelector('#snack-name').value
+              let snackDescriptionValue = document.querySelector('#snack-description').value
+              let snackImageValue = document.querySelector('#snack-image').value
+
+              //put new values into the PUT route
+              let body =
+              {
+                name: snackNameValue,
+                description: snackDescriptionValue,
+                img: snackImageValue
+              }
+              return axios.put(`${snacksURL}/${saveId}`, body)
+              .then(result => {
+                console.log(result);
+                adminTable.innerHTML = ""
+                addSnackButton.classList.remove('hide')
+                loadAdminSnacks(snacksURL)
+              })
+              .catch(err => {console.log(err)})
+
+            })
+
+          })
+
+          //LISTEN for cancel
+          let cancelEdit = document.querySelector('.cancel')
+          cancelEdit.addEventListener('click', (e) => {
+            adminTable.innerHTML = ""
+            addSnackButton.classList.remove('hide')
+            loadAdminSnacks(snacksURL)
+          })
+
+        })
+      })
+    }
+  })
+  .catch((err) => {console.log(err)})
+}
+loadAdminSnacks(snacksURL)
+
+/////LISTEN for add snack
+let addSnackButton = document.querySelector('.add-snack')
+addSnackButton.addEventListener('click', (e) => {
+  //swap in add snack template
+  //populate edit form
+  adminTableHeader.innerHTML = ""
+  adminTable.innerHTML = ""
+  addSnackButton.classList.add('hide')
+  adminTableHeader.innerHTML = addSnackForm()
+
+  //LISTEN for save
+  let saveNewSnack = document.querySelector('.save-new')
+  saveNewSnack.addEventListener('click', (e) => {
+    //grab values
+    let newSnackName = document.querySelector('#snack-name').value
+    let newSnackDescription = document.querySelector('#snack-description').value
+    let newSnackImg = document.querySelector('#snack-image').value
+
+    //and pass to route to save
+    // addSnack({newSnackName, newSnackDescription, newSnackImg})
+    let body = {
+      name:newSnackName, description:newSnackDescription,
+      img:newSnackImg}
+    console.log(body, "BODY");
+    return axios.post(`${snacksURL}`, body)
+    .then(result => {
+      console.log(result, "RESULT");
+      adminTable.innerHTML = ""
+      addSnackButton.classList.remove('hide')
+      loadAdminSnacks(snacksURL)
+    })
+    .catch((err) => {console.log(err)})
+
+    //close and refresh view
+
+  })
+
+  //LISTEN for cancel
+  let cancelEdit = document.querySelector('.cancel')
+  cancelEdit.addEventListener('click', (e) => {
+    adminTable.innerHTML = ""
+    addSnackButton.classList.remove('hide')
+    loadAdminSnacks(snacksURL)
+  })
+})
+
+//////////ADD A SNACK
+function addSnack(body){
+  return axios.post(`${snacksURL}`, body)
+  .then(result => {
+    console.log(result.data);
+  })
+  .catch((err) => {console.log(err)})
+}
+
+//////////GET ONE SNACK
 function getOneSnack(id){
   return axios.get(`${snacksURL}/${id}`)
   .then(result => {
@@ -151,6 +209,7 @@ function getOneSnack(id){
   .catch((err) => {console.log(err)})
 }
 
+//////////DELETE ONE SNACK
 function destroySnack(id){
   return axios.delete(`${snacksURL}/${id}`)
   .then(result => {
@@ -162,11 +221,11 @@ function destroySnack(id){
   })
 }
 
+//////////EDIT ONE SNACK
+//not currently being used !!
 function editSnack(id, body){
-  return axios.put(`${snacksURL}/${id}`)
+  return axios.put(`${snacksURL}/${id}`, body)
   .then(result => {
-    //do stuff
-    console.log(result);
   })
   .catch(err => {
     console.log(err);

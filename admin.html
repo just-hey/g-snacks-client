@@ -21,6 +21,7 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="stylesheet" type="text/css" href="./css/admin.css">
+    <link rel="stylesheet" type="text/css" href="./css/form.css">
 
     <!-- SCRIPTS -->
     <!-- axios -->
@@ -35,6 +36,7 @@
     <script defer type="text/javascript" src="js/modules/mdb.min.js"></script>
     <!-- Page specific js -->
     <script type="text/javascript" src="js/templates/edit-snack-form.js"></script>
+    <script type="text/javascript" src="js/templates/add-snack-form.js"></script>
     <script defer type="text/javascript" src="js/admin.js"></script>
 
     <!-- Next script command may be unneccessary
@@ -72,9 +74,14 @@
 
           </div>
 
+          <div class="btn-container">
+            <button class="add-snack">Add Snack</button>
+          </div>
+
           <table class="table mt-3">
             <!-- APPEND table header titles to this -->
             <thead class="admin-table-header">
+
 
             </thead>
             <!-- APPEND USERS AND SNACKS TO THIS -->
@@ -86,44 +93,6 @@
         </div>
       </div>
     </div>
-
-    <div class="modal fade" id="editSnackModal" tabindex="-1" role="dialog" aria-labelledby="editSnackModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-notify" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editSnackModalLabel">Edit Snack</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form>
-                <div class="modal-body">
-                    <div class="md-form">
-                        <i class="material-icons prefix grey-text animated slideInDown">restaurant</i>
-                        <input type="text" id="editsnack-name" class="form-control">
-                        <!-- <label for="editsnack-name">Snack name</label> -->
-                    </div>
-                    <div class="md-form">
-                        <i class="material-icons prefix grey-text animated slideInDown">description</i>
-                        <input type="text" id="editsnack-description" class="form-control">
-                        <!-- <label for="editsnack-description">Description</label> -->
-                    </div>
-                    <div class="md-form">
-                        <i class="material-icons prefix grey-text animated slideInDown">image</i>
-                        <input type="text" id="editsnack-imageURL" class="form-control">
-                        <!-- <label for="editsnack-imageURL">Image URL</label> -->
-                    </div>
-                    <div id="signup-messagebox">
-                        <!-- Messages go here -->
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button id="signup-submit" type="button" class="btn btn-info" data-id="${id}">Save Changes</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
   </body>
 </html>
