@@ -127,8 +127,7 @@ function loadAdminSnacks(snacksURL){
               .catch(err => {console.log(err)})
 
             })
-            // //get values
-            // editSnack(id, body)
+
           })
 
           //LISTEN for cancel
@@ -137,34 +136,6 @@ function loadAdminSnacks(snacksURL){
             adminTable.innerHTML = ""
             loadAdminSnacks(snacksURL)
           })
-
-
-          // //MDB MODAL
-          // //locate form inputs in DOM
-          // let nameValue = document.querySelector('#editsnack-name')
-          // let descriptionValue = document.querySelector('#editsnack-description')
-          // let imageValue = document.querySelector('#editsnack-imageURL')
-          //
-          // //add values
-          // nameValue.setAttribute('value', result.name)
-          // descriptionValue.setAttribute('value', result.description)
-          // imageValue.setAttribute('value', result.img)
-          //
-          // //listen for click on submit
-          // let editSave = document.querySelector('#edit-save')
-          // editSave.addEventListener('click', (e) => {
-          //
-          //   let body = {name: nameValue.value, description: descriptionValue.value, img: imageValue.value}
-          //   //bug: after editing one snack, then the edited values appear for every other snack that's clicked on.
-          //   axios.put(`${snacksURL}/${thisId}`, body)
-          //   .then(result => {
-          //     $('#editSnackModal').modal('hide')
-          //     loadAdminSnacks(snacksURL)
-          //   })
-          //   .catch(err => {
-          //     console.log(err);
-          //   })
-          // })
 
         })
       })
