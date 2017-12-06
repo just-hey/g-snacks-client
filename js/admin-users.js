@@ -4,7 +4,7 @@ function userRow(id, firstName, lastName, role){
   return   `<tr data-id="${id}">
       <td scope="row"><i class="material-icons delete-user" data-id="${id}">close</i></td>
       <td>${firstName} ${lastName}</td>
-      <td><i class="material-icons ${role}">account_box</i></td>
+      <td><i class="material-icons ${role} user-role" data-id="${id}>account_box</i></td>
     </tr>
     `
 }
@@ -36,6 +36,13 @@ function loadAdminUsers(usersURL){
         let userId = e.target.getAttribute('data-id')
         destroyUser(userId)
       })
+    }
+
+    //LISTEN for user/admin role click
+    let roleToggle = document.querySelectorAll('.user-role')
+    for (var i = 0; i < roleToggle.length; i++) {
+      //get user id ... and current role?
+      //run route to update user 
     }
   })
 
