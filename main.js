@@ -25,7 +25,6 @@ function loadSnacks(baseURL){
             // console.log('im a snack!', thisSnack[i]);
             justOneSnack(baseURL, thisSnack[i].id)
           // }
-
         })
       }
       })
@@ -38,16 +37,23 @@ loadSnacks(baseURL)
 function justOneSnack(baseURL, id) {
   return axios.get(`${baseURL}/snacks/${id}`)
     .then(result => {
-      console.log('this!!!', result.data.response)
       let theResult = result.data.response
       for (var i = 0; i < theResult.length; i++) {
         let thisSnack = theResult[i]
         snacksContainer.innerHTML = oneSnackCard(thisSnack.id, thisSnack.name, thisSnack.description, thisSnack.img)
-        reviewsContainer.innerHTML = loadUserReviews(thisSnack.title, thisSnack.first_name, thisSnack.last_name, thisSnack.text)
+        reviewsContainer.innerHTML = loadUserReviews(thisSnack.title, thisSnack.first_name, thisSnack.last_name, thisSnack.text, starMaker(thisSnack.rating))
       }
-
       navBar.classList.add('dark-blue')
       carouselContainer.classList.add('hide')
       footerContainer.classList.add('hide')
     })
+}
+
+//////////CREATES STARS TO DROP INTO REVIEWS
+function starMaker(rating) {
+  let stars = ['star_border', 'star_border', 'star_border', 'star_border', 'star_border']
+  for (var i = 0; i < rating; i++) {
+    stars[i] = 'star'
+  }
+  return stars
 }
