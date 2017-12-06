@@ -93,10 +93,23 @@ function loadAdminSnacks(snacksURL){
         .then(result => {
 
           let editFormDiv = document.querySelector('.edit-form')
-          let adminTableContainer = document.querySelector('.admin-container')
 
-          adminTableContainer.innerHTML = ""
-          editFormDiv.innerHTML = editSnackForm(result.id, result.name, result.description, result.img)
+          //populate edit form
+          adminTableHeader.innerHTML = ""
+          adminTable.innerHTML = ""
+          adminTableHeader.innerHTML = editSnackForm(result.id, result.name, result.description, result.img)
+
+          //LISTEN for save
+          let saveEdit = document.querySelector('.save-edit')
+
+
+          //LISTEN for cancel
+          let cancelEdit = document.querySelector('.cancel')
+          cancelEdit.addEventListener('click', (e) => {
+            console.log("cancel edit");
+            adminTable.innerHTML = ""
+            loadAdminSnacks(snacksURL)
+          })
 
 
           // //MDB MODAL

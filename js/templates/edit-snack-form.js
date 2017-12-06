@@ -1,5 +1,6 @@
 function editSnackForm(id, name, description, img){
   return `
+  <div class="edit-form">
   <label for="snack-name">Name</label>
         <input type="text" name="snack-name" value="${name}" class="mb-4"></input>
         <label for="snack-description">Description</label>
@@ -9,5 +10,5 @@ function editSnackForm(id, name, description, img){
         <div class="save-cancel-buttons mt-4">
         <button class="cancel">Cancel</button>
         <button class="save-edit" data-id="${id}">Save Changes</button>
-        </div>`
+        </div></div>`
 }
