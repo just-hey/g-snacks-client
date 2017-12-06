@@ -36,11 +36,7 @@ function oneSnackCard(id, name, description, img) {
               <div class="col">
 
                 <div class="reviews-list mt-4">
-                  <h4 class="mb-3">WHAT OTHER TASTEBUDS SAY:</h4>
-
-
-
-                          
+                  
                 </div>
               </div>
             </div>
