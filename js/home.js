@@ -1,43 +1,62 @@
 const carouselContainer = document.querySelector('.carousel')
 const snacksContainer = document.querySelector('.snack-content')
 const footerContainer = document.querySelector('.page-footer')
+let reviewsContainer = document.querySelector('.reviews-list')
 
 //////////LOAD ALL SNACKS
 function loadSnacks(baseURL){
-
   return axios.get(`${baseURL}/snacks`)
     .then(result => {
       result.data.response.forEach(el => {
         snacksContainer.innerHTML += snackCard(el.id, el.name, el.description, el.img)
-      let snackLinks = document.querySelectorAll('.snackLink')
-      let snackCardContainer = document.querySelectorAll('.card')
-      for (let i = 0; i < snackLinks.length; i++) {
-        snackCardContainer[i].addEventListener('click', (e) => {
-          e.preventDefault()
-          let snackID = e.target.getAttribute('data-id')
-          // if (e.target.matches('.snackLink')) {
+        let snackLinks = document.querySelectorAll('.snackLink')
+        let snackCardContainer = document.querySelectorAll('.card')
+        for (let i = 0; i < snackLinks.length; i++) {
+          snackCardContainer[i].addEventListener('click', (e) => {
+            e.preventDefault()
+            let snackID = e.target.getAttribute('data-id')
             let thisSnack = result.data.response
-            //console.log('im a snack!', thisSnack[i]);
             justOneSnack(baseURL, thisSnack[i].id)
-          // }
-
-        })
-      }
+          })
+        }
       })
     })
 }
+
 loadSnacks(baseURL)
 
-//////////LOAD ONE SNACK
+//////////LOAD ONE SNACK AND ALL OF IT'S REVIEWS
 function justOneSnack(baseURL, id) {
+  let avgSnackRating = 0
   return axios.get(`${baseURL}/snacks/${id}`)
     .then(result => {
-      //console.log('this!!!', result.data.response);
-      let thisSnack = result.data.response
-      snacksContainer.innerHTML = oneSnackCard(thisSnack.id, thisSnack.name, thisSnack.description, thisSnack.img)
+      let theResult = result.data.response
 
-      navBar.classList.add('dark-blue')
-      carouselContainer.classList.add('hide')
-      footerContainer.classList.add('hide')
+      //if there is atleast one review for the snack
+      if (theResult[0].title !== null) {
+        snacksContainer.innerHTML = oneSnackCard(theResult[0].id, theResult[0].name, theResult[0].description, theResult[0].img)
+        for (var i = 0; i < theResult.length; i++) {
+          let thisSnack = theResult[i]
+          avgSnackRating += theResult[i].rating
+          console.log('average!', (avgSnackRating))
+          reviewsContainer.innerHTML += loadUserReviews(theResult[i].title, theResult[i].first_name, theResult[i].last_name, theResult[i].text, starMaker(theResult[i].rating))
+        }
+      }
+      //else there are no reviews for said snack
+      else {
+        snacksContainer.innerHTML = oneSnackCard(theResult[0].id, theResult[0].name, theResult[0].description, theResult[0].img)
+        navBar.classList.add('dark-blue')
+        carouselContainer.classList.add('hide')
+        footerContainer.classList.add('hide')
+      }
     })
+}
+
+//////////CREATES STARS TO DROP INTO REVIEWS
+function starMaker(rating) {
+  let stars = ['star_border', 'star_border', 'star_border', 'star_border', 'star_border']
+  for (var i = 0; i < rating; i++) {
+    stars[i] = 'star'
+  }
+  return stars
 }

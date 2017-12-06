@@ -73,12 +73,6 @@ function validateUser() {
   })  
 }
 
-function login() {
-  // Load user data
-  window.snacksUserToken = localStorage.getItem('snacksUserToken')
-  // setNavbar(
-}
-
 // Clear modals on hide
 $('#signupModal').on('hidden.bs.modal', function () {
   document.querySelector('#signup-firstname').value = ''
