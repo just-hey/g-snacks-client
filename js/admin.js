@@ -108,12 +108,19 @@ function loadAdminSnacks(snacksURL){
             .then(result => {
               //assign body to new values
               let snackNameValue = document.querySelector('#snack-name').value
-              // let snackDescriptionValue = document.querySelector('#snack-description').textContent
-              let snackImageValue = document.querySelector('#snack-image')
+              let snackDescriptionValue = document.querySelector('#snack-description').value
+              let snackImageValue = document.querySelector('#snack-image').value
 
-              let body = {name: snackNameValue, img: snackImageValue}
+              //put new values into the PUT route
+              let body =
+              {
+                name: snackNameValue,
+                description: snackDescriptionValue,
+                img: snackImageValue
+              }
               return axios.put(`${snacksURL}/${saveId}`, body)
               .then(result => {
+                console.log(result);
                 adminTable.innerHTML = ""
                 loadAdminSnacks(snacksURL)
               })
