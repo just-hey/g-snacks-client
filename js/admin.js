@@ -26,13 +26,6 @@ userTab.addEventListener('click', (e) => {
 
 //////////LOAD USERS
 function loadUsers(usersURL){
-
-  // return axios.get(usersURL)
-  // .then(result => {
-  //   console.log(result.data.response);
-  // })
-  // .catch((err) => {console.log(err)})
-
   adminTableHeader.innerHTML = ""
   adminTableHeader.innerHTML =
   `<tr>
@@ -75,16 +68,6 @@ function loadUsers(usersURL){
   </tr>`
 }
 
-
-// function userTable(id, name){
-//   return `<tr>
-//     <td scope="row" data-id=${id}><i class="material-icons delete-user">close</i></td>
-//     <td>${name}</td>
-//     <td><i class="material-icons toggle-admin">account_box</i></td>
-//   </tr>`
-// }
-
-
 //////////LOAD SNACKS
 function loadAdminSnacks(snacksURL){
   return axios.get(snacksURL)
@@ -114,8 +97,9 @@ function loadAdminSnacks(snacksURL){
     for (var i = 0; i < editSnack.length; i++) {
       editSnack[i].addEventListener('click', (e) => {
         let thisId = e.target.getAttribute('data-id')
+        console.log(thisId);
         //get associated info for this one snack
-        return getOneSnack(thisId)
+        return getOneSnack(thisId) 
         .then(result => {
           //locate form inputs in DOM
           let nameValue = document.querySelector('#editsnack-name')
@@ -126,7 +110,24 @@ function loadAdminSnacks(snacksURL){
           nameValue.setAttribute('value', result.name)
           descriptionValue.setAttribute('value', result.description)
           imageValue.setAttribute('value', result.img)
-          console.log(result);
+
+          //listen for click on submit
+          let editSave = document.querySelector('#edit-save')
+          editSave.addEventListener('click', (e) => {
+
+            let body = {name: nameValue.value, description: descriptionValue.value, img: imageValue.value}
+            //bug: after editing one snack, then the edited values appear for every other snack that's clicked on.
+            axios.put(`${snacksURL}/${thisId}`, body)
+            .then(result => {
+              $('#editSnackModal').modal('hide')
+              loadAdminSnacks(snacksURL)
+            })
+            .catch(err => {
+              console.log(err);
+            })
+            //and then... how to close the modal?
+          })
+
         })
       })
     }
@@ -163,10 +164,8 @@ function destroySnack(id){
 }
 
 function editSnack(id, body){
-  return axios.put(`${snacksURL}/${id}`)
+  return axios.put(`${snacksURL}/${id}`, body)
   .then(result => {
-    //do stuff
-    console.log(result);
   })
   .catch(err => {
     console.log(err);
