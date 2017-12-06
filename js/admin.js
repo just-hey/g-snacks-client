@@ -17,5 +17,5 @@ userTab.addEventListener('click', (e) => {
     userTab.classList.add('active-tab')
     snackTab.classList.remove('active-tab')
   }
-  loadUsers(usersURL)
+  loadAdminUsers(usersURL)
 })

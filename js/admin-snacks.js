@@ -4,7 +4,7 @@ function snackRow(id, name){
   return `<tr data-id="${id}">
     <td scope="row"><i class="material-icons delete-snack" data-id="${id}">close</i></td>
     <td>${name}</td>
-    <td><i class="material-icons edit-snack" data-id="${id}" data-toggle="modal" data-target="#editSnackModal">mode_edit</i></td>
+    <td><i class="material-icons edit-snack" data-id="${id}" >mode_edit</i></td>
   </tr>`
 }
 
@@ -147,7 +147,7 @@ addSnackButton.addEventListener('click', (e) => {
 })
 
 //////////ADD A SNACK
-// !! also not being used 
+// !! also not being used
 function addSnack(body){
   return axios.post(`${snacksURL}`, body)
   .then(result => {
@@ -172,9 +172,7 @@ function destroySnack(id){
     adminTable.innerHTML = ""
     return loadAdminSnacks(snacksURL)
   })
-  .catch(err => {
-    console.log(err);
-  })
+  .catch(err => {console.log(err)})
 }
 
 //////////EDIT ONE SNACK
@@ -183,7 +181,5 @@ function editSnack(id, body){
   return axios.put(`${snacksURL}/${id}`, body)
   .then(result => {
   })
-  .catch(err => {
-    console.log(err);
-  })
+  .catch(err => {console.log(err)})
 }
