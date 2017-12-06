@@ -1,5 +1,14 @@
 const usersURL = 'http://localhost:3000/api/users'
 
+function userRow(firstName, lastName, role){
+  return   `<tr>
+      <td scope="row"><i class="material-icons delete-user">close</i></td>
+      <td>${firstName} ${lastName}</td>
+      <td><i class="material-icons ${role}">account_box</i></td>
+    </tr>
+    `
+}
+
 //////////LOAD USERS
 function loadUsers(usersURL){
   //change table header
@@ -10,19 +19,15 @@ function loadUsers(usersURL){
     <th>Username</th>
     <th>Admin</th>
   </tr>`
-  //placeholder html -!! will be dynamic
+
+  //add rows
   adminTable.innerHTML = ""
-  adminTable.innerHTML =
-  `<tr>
-    <td scope="row"><i class="material-icons delete-user">close</i></td>
-    <td>JanelleMonae</td>
-    <td><i class="material-icons not-admin">account_box</i></td>
-  </tr>
-  `
-  ///how can I access during dev??
   return axios.get(usersURL, { headers: { authorization: `Bearer ${snacksUserToken}`} })
   .then(result => {
-    console.log(result.data.response);
+    result.data.response.forEach(el => {
+      adminTable.innerHTML += userRow(el.first_name, el.last_name, el.role)
+    })
+
   })
 
 }

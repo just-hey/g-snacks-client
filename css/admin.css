@@ -75,11 +75,11 @@ td, th {
   cursor: pointer;
 }
 
-.not-admin {
+.user {
   color: #e0e0e0;
 }
 
-.is-admin, .edit-snack {
+.admin, .edit-snack {
   color: #007bff;
   cursor: pointer;
 }
