@@ -4,11 +4,13 @@ let navBar = document.querySelector('.navbar')
 let carouselContainer = document.querySelector('.carousel')
 let snacksContainer = document.querySelector('.snack-content')
 let footerContainer = document.querySelector('.page-footer')
+let reviewsContainer = document.querySelector('.reviews-list')
 
 //////////LOAD ALL SNACKS
 function loadSnacks(baseURL){
 
   return axios.get(`${baseURL}/snacks`)
+
     .then(result => {
       result.data.response.forEach(el => {
         snacksContainer.innerHTML += snackCard(el.id, el.name, el.description, el.img)
@@ -20,7 +22,7 @@ function loadSnacks(baseURL){
           let snackID = e.target.getAttribute('data-id')
           // if (e.target.matches('.snackLink')) {
             let thisSnack = result.data.response
-            //console.log('im a snack!', thisSnack[i]);
+            // console.log('im a snack!', thisSnack[i]);
             justOneSnack(baseURL, thisSnack[i].id)
           // }
 
@@ -29,15 +31,20 @@ function loadSnacks(baseURL){
       })
     })
 }
+
 loadSnacks(baseURL)
 
-//////////LOAD ONE SNACK
+//////////LOAD ONE SNACK AND ALL OF IT'S REVIEWS
 function justOneSnack(baseURL, id) {
   return axios.get(`${baseURL}/snacks/${id}`)
     .then(result => {
-      //console.log('this!!!', result.data.response);
-      let thisSnack = result.data.response
-      snacksContainer.innerHTML = oneSnackCard(thisSnack.id, thisSnack.name, thisSnack.description, thisSnack.img)
+      console.log('this!!!', result.data.response)
+      let theResult = result.data.response
+      for (var i = 0; i < theResult.length; i++) {
+        let thisSnack = theResult[i]
+        snacksContainer.innerHTML = oneSnackCard(thisSnack.id, thisSnack.name, thisSnack.description, thisSnack.img)
+        reviewsContainer.innerHTML = loadUserReviews(thisSnack.title, thisSnack.first_name, thisSnack.last_name, thisSnack.text)
+      }
 
       navBar.classList.add('dark-blue')
       carouselContainer.classList.add('hide')
