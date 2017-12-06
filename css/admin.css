@@ -45,6 +45,27 @@
   background-color: #9fa8da;
 }
 
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.add-snack {
+  width: 100%;
+  max-width: 600px;
+  height: 3em;
+  margin: 1em;
+  border: none;
+  background-color: #3f51b5;
+  color: #fff;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+.add-snack:hover {
+  background-color: #5c6bc0;
+}
+
 td, th {
   text-align: center;
 }
