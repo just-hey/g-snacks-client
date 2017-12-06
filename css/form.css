@@ -26,7 +26,7 @@ textarea {
   width: 100%;
 }
 
-.save-edit, .cancel {
+.save-edit, .save-new, .cancel {
   width: 50%;
   height: 4em;
   border: none;
@@ -35,12 +35,12 @@ textarea {
   transition: 0.5s;
 }
 
-.save-edit {
+.save-edit, .save-new {
   background-color: #4caf50;
   margin-left: 0.5em;
 }
 
-.save-edit:hover {
+.save-edit:hover, .save-new:hover {
   background-color: #66bb6a;
 }
 

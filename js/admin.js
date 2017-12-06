@@ -87,16 +87,14 @@ function loadAdminSnacks(snacksURL){
     for (var i = 0; i < editSnack.length; i++) {
       editSnack[i].addEventListener('click', (e) => {
         let thisId = e.target.getAttribute('data-id')
-        console.log(thisId);
         //get associated info for this one snack
         return getOneSnack(thisId)
         .then(result => {
-
           let editFormDiv = document.querySelector('.edit-form')
-
           //populate edit form
           adminTableHeader.innerHTML = ""
           adminTable.innerHTML = ""
+          addSnackButton.classList.add('hide')
           adminTableHeader.innerHTML = editSnackForm(result.id, result.name, result.description, result.img)
 
           //LISTEN for save
@@ -122,6 +120,7 @@ function loadAdminSnacks(snacksURL){
               .then(result => {
                 console.log(result);
                 adminTable.innerHTML = ""
+                addSnackButton.classList.remove('hide')
                 loadAdminSnacks(snacksURL)
               })
               .catch(err => {console.log(err)})
@@ -134,6 +133,7 @@ function loadAdminSnacks(snacksURL){
           let cancelEdit = document.querySelector('.cancel')
           cancelEdit.addEventListener('click', (e) => {
             adminTable.innerHTML = ""
+            addSnackButton.classList.remove('hide')
             loadAdminSnacks(snacksURL)
           })
 
@@ -144,6 +144,61 @@ function loadAdminSnacks(snacksURL){
   .catch((err) => {console.log(err)})
 }
 loadAdminSnacks(snacksURL)
+
+/////LISTEN for add snack
+let addSnackButton = document.querySelector('.add-snack')
+addSnackButton.addEventListener('click', (e) => {
+  //swap in add snack template
+  //populate edit form
+  adminTableHeader.innerHTML = ""
+  adminTable.innerHTML = ""
+  addSnackButton.classList.add('hide')
+  adminTableHeader.innerHTML = addSnackForm()
+
+  //LISTEN for save
+  let saveNewSnack = document.querySelector('.save-new')
+  saveNewSnack.addEventListener('click', (e) => {
+    //grab values
+    let newSnackName = document.querySelector('#snack-name').value
+    let newSnackDescription = document.querySelector('#snack-description').value
+    let newSnackImg = document.querySelector('#snack-image').value
+
+    //and pass to route to save
+    // addSnack({newSnackName, newSnackDescription, newSnackImg})
+    let body = {
+      name:newSnackName, description:newSnackDescription,
+      img:newSnackImg}
+    console.log(body, "BODY");
+    return axios.post(`${snacksURL}`, body)
+    .then(result => {
+      console.log(result, "RESULT");
+      adminTable.innerHTML = ""
+      addSnackButton.classList.remove('hide')
+      loadAdminSnacks(snacksURL)
+    })
+    .catch((err) => {console.log(err)})
+
+    //close and refresh view
+
+  })
+
+  //LISTEN for cancel
+  let cancelEdit = document.querySelector('.cancel')
+  cancelEdit.addEventListener('click', (e) => {
+    adminTable.innerHTML = ""
+    addSnackButton.classList.remove('hide')
+    loadAdminSnacks(snacksURL)
+  })
+})
+
+//////////ADD A SNACK
+function addSnack(body){
+  return axios.post(`${snacksURL}`, body)
+  .then(result => {
+    console.log(result.data);
+  })
+  .catch((err) => {console.log(err)})
+}
 
 //////////GET ONE SNACK
 function getOneSnack(id){
