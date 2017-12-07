@@ -1,4 +1,5 @@
 const snacksURL = 'http://localhost:3000/api/snacks'
+let addSnackButton = document.querySelector('.add-snack')
 
 function snackRow(id, name){
   return `<tr data-id="${id}">
@@ -101,7 +102,6 @@ function loadAdminSnacks(snacksURL){
 loadAdminSnacks(snacksURL)
 
 /////LISTEN for add snack
-let addSnackButton = document.querySelector('.add-snack')
 addSnackButton.addEventListener('click', (e) => {
   //swap in add snack template
   //populate edit form
@@ -123,17 +123,15 @@ addSnackButton.addEventListener('click', (e) => {
     let body = {
       name:newSnackName, description:newSnackDescription,
       img:newSnackImg}
-    console.log(body, "BODY");
+      console.log(body, "can haz body??");
     return axios.post(`${snacksURL}`, body)
     .then(result => {
-      console.log(result, "RESULT");
+      console.log(result, "can haz result?");
       adminTable.innerHTML = ""
       addSnackButton.classList.remove('hide')
       loadAdminSnacks(snacksURL)
     })
     .catch((err) => {console.log(err)})
-
-    //close and refresh view
 
   })
 

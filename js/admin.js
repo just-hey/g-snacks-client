@@ -4,13 +4,14 @@ let adminTable = document.querySelector('.admin-table')
 let adminTableHeader = document.querySelector('.admin-table-header')
 
 // CUSTOM PAGE UPDATER
-function pageUpdate() { 
+function pageUpdate() {
 }
 
 /////ADMIN TABS - toggle view and style
 snackTab.addEventListener('click', (e) => {
   if(!snackTab.classList.contains('active-tab')){
     snackTab.classList.add('active-tab')
+    addSnackButton.classList.remove('hide')
     userTab.classList.remove('active-tab')
   }
   loadAdminSnacks(snacksURL)
@@ -19,6 +20,7 @@ snackTab.addEventListener('click', (e) => {
 userTab.addEventListener('click', (e) => {
   if(!userTab.classList.contains('active-tab')){
     userTab.classList.add('active-tab')
+    addSnackButton.classList.add('hide')
     snackTab.classList.remove('active-tab')
   }
   loadAdminUsers(usersURL)
