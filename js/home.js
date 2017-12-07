@@ -3,6 +3,19 @@ const snacksContainer = document.querySelector('.snack-content')
 const footerContainer = document.querySelector('.page-footer')
 let reviewsContainer = document.querySelector('.reviews-list')
 
+// CUSTOM PAGE UPDATER
+function pageUpdate() {
+  if (snacksUser) {
+    carouselContainer.style.display = 'none'
+    navBar.style.backgroundColor = 'rgb(45, 71, 119)'
+  }
+  else {
+    carouselContainer.style.display = 'block'
+    navBar.style.backgroundColor = 'rgba(45, 71, 119, 0)'
+  }
+}
+
+
 //////////LOAD ALL SNACKS
 function loadSnacks(baseURL){
   return axios.get(`${baseURL}/snacks`)
@@ -28,7 +41,7 @@ loadSnacks(baseURL)
 //////////LOAD ONE SNACK AND ALL OF IT'S REVIEWS
 function justOneSnack(baseURL, id) {
   let avgSnackRating = 0
-  return axios.get(`${baseURL}/snacks/${id}`)
+  return axios.get(`${baseURL}/snacks/${id}/reviews`)
     .then(result => {
       let theResult = result.data.response
 
