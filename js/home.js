@@ -51,7 +51,7 @@ function justOneSnack(baseURL, id) {
         for (var i = 0; i < theResult.length; i++) {
           let thisSnack = theResult[i]
           avgSnackRating += theResult[i].rating
-          console.log('average!', (avgSnackRating))
+          // console.log('average!', (avgSnackRating))
           reviewsContainer.innerHTML += loadUserReviews(theResult[i].title, theResult[i].first_name, theResult[i].last_name, theResult[i].text, starMaker(theResult[i].rating))
         }
       }
@@ -63,6 +63,16 @@ function justOneSnack(baseURL, id) {
         footerContainer.classList.add('hide')
       }
     })
+    .then(result => {
+      //LISTEN for add review click
+      let reviewButton = document.querySelector('.review-button')
+      reviewButton.addEventListener('click', (e) => {
+        let addReview = document.querySelector('.add-review')
+        addReview.innerHTML = addReviewForm()
+      })
+    })
+
+
 }
 
 //////////CREATES STARS TO DROP INTO REVIEWS
