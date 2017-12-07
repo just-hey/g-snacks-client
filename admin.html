@@ -35,9 +35,13 @@
     <!-- MDB core JavaScript -->
     <script defer type="text/javascript" src="js/modules/mdb.min.js"></script>
     <!-- Page specific js -->
+    <script defer type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/templates/edit-snack-form.js"></script>
     <script type="text/javascript" src="js/templates/add-snack-form.js"></script>
     <script defer type="text/javascript" src="js/admin.js"></script>
+    <script defer type="text/javascript" src="js/admin-users.js"></script>
+    <script defer type="text/javascript" src="js/admin-snacks.js"></script>
+
 
     <!-- Next script command may be unneccessary
     <script>
@@ -69,13 +73,13 @@
         <div class="col">
 
           <div class="admin-tabs">
-            <a class="snack-tab active-tab"><i class="material-icons mr-2">restaurant</i> Edit Snacks</a>
-            <a class="user-tab"><i class="material-icons mr-2">person</i> Edit Users</a>
+            <a class="snack-tab"><i class="material-icons mr-2">restaurant</i> Edit Snacks</a>
+            <a class="user-tab active-tab"><i class="material-icons mr-2">person</i> Edit Users</a>
 
           </div>
 
           <div class="btn-container">
-            <button class="add-snack">Add Snack</button>
+            <button class="add-snack hide">Add Snack</button>
           </div>
 
           <table class="table mt-3">

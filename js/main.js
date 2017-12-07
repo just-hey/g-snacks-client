@@ -24,8 +24,8 @@ function login() {
   // If user is logged in, get their user data
   if (snacksUserToken) {
     axios.get(`${baseURL}/users/fromToken`, { headers: { authorization: `Bearer ${snacksUserToken}` } })
-    .then(result => { 
-      snacksUser = result.data.response 
+    .then(result => {
+      snacksUser = result.data.response
       // Set navbar choices based on user state
       setNavChoices(snacksUser)
       // Set event listener for logout button
@@ -60,5 +60,5 @@ function setNavChoices(user) {
   }
   else {
     navChoices.innerHTML = NavLinks.guest()
-  } 
+  }
 }

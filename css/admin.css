@@ -70,18 +70,20 @@ td, th {
   text-align: center;
 }
 
-.delete-user, .delete-snack {
-  color: #e53935;
+.delete-user, .delete-snack, .user-role, .edit-snack {
   cursor: pointer;
 }
 
-.not-admin {
+.delete-user, .delete-snack {
+  color: #e53935;
+}
+
+.user {
   color: #e0e0e0;
 }
 
-.is-admin, .edit-snack {
+.admin, .edit-snack {
   color: #007bff;
-  cursor: pointer;
 }
 
 
