@@ -41,7 +41,7 @@ loadSnacks(baseURL)
 //////////LOAD ONE SNACK AND ALL OF IT'S REVIEWS
 function justOneSnack(baseURL, id) {
   let avgSnackRating = 0
-  return axios.get(`${baseURL}/snacks/${id}`)
+  return axios.get(`${baseURL}/snacks/${id}/reviews`)
     .then(result => {
       let theResult = result.data.response
 
