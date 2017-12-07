@@ -70,9 +70,12 @@ td, th {
   text-align: center;
 }
 
+.delete-user, .delete-snack, .user-role, .edit-snack {
+  cursor: pointer;
+}
+
 .delete-user, .delete-snack {
   color: #e53935;
-  cursor: pointer;
 }
 
 .user {
@@ -81,7 +84,6 @@ td, th {
 
 .admin, .edit-snack {
   color: #007bff;
-  cursor: pointer;
 }
 
 

@@ -2,9 +2,13 @@ const usersURL = 'http://localhost:3000/api/users'
 
 function userRow(id, firstName, lastName, role){
   return   `<tr data-id="${id}">
-      <td scope="row"><i class="material-icons delete-user" data-id="${id}">close</i></td>
+      <td scope="row">
+        <i class="material-icons delete-user" data-id="${id}">close</i>
+      </td>
       <td>${firstName} ${lastName}</td>
-      <td><i class="material-icons ${role} user-role" data-id="${id}>account_box</i></td>
+      <td>
+        <i class="material-icons user-role ${role}" data-id="${id}">account_box</i>
+      </td>
     </tr>
     `
 }
@@ -41,8 +45,17 @@ function loadAdminUsers(usersURL){
     //LISTEN for user/admin role click
     let roleToggle = document.querySelectorAll('.user-role')
     for (var i = 0; i < roleToggle.length; i++) {
-      //get user id ... and current role?
-      //run route to update user 
+      roleToggle[i].addEventListener('click', (e) => {
+        //change color
+        if(e.target.classList.contains('user')){
+          e.target.classList.remove('user')
+          e.target.classList.add('admin')
+        } else {
+          e.target.classList.remove('admin')
+          e.target.classList.add('user')
+        }
+        //get user id, role, and run route to update
+      })
     }
   })
 
