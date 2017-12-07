@@ -62,3 +62,21 @@ function setNavChoices(user) {
     navChoices.innerHTML = NavLinks.guest()
   }
 }
+
+// CUSTOM PAGE UPDATER
+function pageUpdate() {
+  // index.html
+  if (window.location.pathname === '/index.html') {
+    if (snacksUser) {
+      carouselContainer.style.display = 'none'
+      navBar.style.backgroundColor = 'rgb(45, 71, 119)'
+    }
+    else {
+      carouselContainer.style.display = 'block'
+      navBar.style.backgroundColor = 'rgba(45, 71, 119, 0)'
+    }
+  }
+  // admin.html
+  if (window.location.pathname === '/admin.html') {
+  }
+}
