@@ -30,9 +30,15 @@ function login() {
       setNavChoices(snacksUser)
       // Set event listener for logout button
       document.querySelector('#nav-logout').addEventListener('click', logout)
+      // Run custom updater for page
+      pageUpdate()
     })
   }
-  else setNavChoices(snacksUser)
+  else {
+    setNavChoices(snacksUser)
+    // Run custom updater for page
+    pageUpdate()
+  }
 }
 
 function logout() {
