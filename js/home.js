@@ -40,24 +40,27 @@ loadSnacks(baseURL)
 
 //////////LOAD ONE SNACK AND ALL OF IT'S REVIEWS
 function justOneSnack(baseURL, id) {
-  let avgSnackRating = 0
   return axios.get(`${baseURL}/snacks/${id}/reviews`)
     .then(result => {
       let theResult = result.data.response
-
       //if there is atleast one review for the snack
       if (theResult[0].title !== null) {
-        snacksContainer.innerHTML = oneSnackCard(theResult[0].id, theResult[0].name, theResult[0].description, theResult[0].img)
+        //populate html with reviews info card
+        let totalSnackRating = 0
+        let count = 0
         for (var i = 0; i < theResult.length; i++) {
           let thisSnack = theResult[i]
-          avgSnackRating += theResult[i].rating
-          console.log('average!', (avgSnackRating))
+          totalSnackRating += theResult[i].rating
+          count++
           reviewsContainer.innerHTML += loadUserReviews(theResult[i].title, theResult[i].first_name, theResult[i].last_name, theResult[i].text, starMaker(theResult[i].rating))
         }
+        //populate snack card info
+        let avgSnackRating = avgRating(totalSnackRating, count)
+        snacksContainer.innerHTML = oneSnackCard(theResult[0].id, theResult[0].name, theResult[0].description, theResult[0].img, starMaker(avgSnackRating))
       }
-      //else there are no reviews for said snack
+      //else there are no reviews for said snack it's rating will be 0!
       else {
-        snacksContainer.innerHTML = oneSnackCard(theResult[0].id, theResult[0].name, theResult[0].description, theResult[0].img)
+        snacksContainer.innerHTML = oneSnackCard(theResult[0].id, theResult[0].name, theResult[0].description, theResult[0].img, starMaker())
         navBar.classList.add('dark-blue')
         carouselContainer.classList.add('hide')
         footerContainer.classList.add('hide')
@@ -66,10 +69,15 @@ function justOneSnack(baseURL, id) {
 }
 
 //////////CREATES STARS TO DROP INTO REVIEWS
-function starMaker(rating) {
+function starMaker(rating = 0) {
   let stars = ['star_border', 'star_border', 'star_border', 'star_border', 'star_border']
   for (var i = 0; i < rating; i++) {
     stars[i] = 'star'
   }
   return stars
+}
+
+//////////GENERATES AVERAGE RATING FOR THE VIEWONESNACK PAGE
+function avgRating(totalSnackRating, count) {
+  return totalSnackRating/count
 }
