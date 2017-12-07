@@ -46,15 +46,19 @@ function loadAdminUsers(usersURL){
     let roleToggle = document.querySelectorAll('.user-role')
     for (var i = 0; i < roleToggle.length; i++) {
       roleToggle[i].addEventListener('click', (e) => {
-        //change color
+        let userId = e.target.getAttribute('data-id')
+        let body
         if(e.target.classList.contains('user')){
           e.target.classList.remove('user')
           e.target.classList.add('admin')
+          body = { role: "admin" }
+          changeUserRole(userId, body)
         } else {
           e.target.classList.remove('admin')
           e.target.classList.add('user')
+          body = { role: "user" }
+          changeUserRole(userId, body)
         }
-        //get user id, role, and run route to update
       })
     }
   })
@@ -62,7 +66,16 @@ function loadAdminUsers(usersURL){
 }
 loadAdminUsers(usersURL)
 
-//////////DELETE ONE SNACK
+//////////EDIT USER ROLE
+function changeUserRole(id, body){
+  return axios.put(`${usersURL}/promote/${id}`, body, { headers: { authorization: `Bearer ${snacksUserToken}`} })
+  .then(result => {
+    console.log(result.data.response);
+  })
+  .catch(err => {console.log(err)})
+}
+
+//////////DELETE ONE USER
 function destroyUser(id){
   return axios.delete(`${usersURL}/${id}`, { headers: { authorization: `Bearer ${snacksUserToken}`} })
   .then(result => {

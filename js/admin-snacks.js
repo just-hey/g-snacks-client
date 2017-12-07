@@ -123,10 +123,8 @@ addSnackButton.addEventListener('click', (e) => {
     let body = {
       name:newSnackName, description:newSnackDescription,
       img:newSnackImg}
-      console.log(body, "can haz body??");
     return axios.post(`${snacksURL}`, body)
     .then(result => {
-      console.log(result, "can haz result?");
       adminTable.innerHTML = ""
       addSnackButton.classList.remove('hide')
       loadAdminSnacks(snacksURL)
