@@ -68,11 +68,11 @@ function pageUpdate() {
   // index.html
   if (window.location.pathname === '/index.html') {
     if (snacksUser) {
-      carouselContainer.style.display = 'none'
+      document.querySelector('.carousel').style.display = 'none'
       navBar.style.backgroundColor = 'rgb(45, 71, 119)'
     }
     else {
-      carouselContainer.style.display = 'block'
+      document.querySelector('.carousel').style.display = 'block'
       navBar.style.backgroundColor = 'rgba(45, 71, 119, 0)'
     }
   }
