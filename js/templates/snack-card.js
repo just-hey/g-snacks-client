@@ -11,7 +11,7 @@ function snackCard(id, name, description, img){
                     <!--Title-->
                     <h4 class="card-title"><a data-id="${id}" class="snackLink" href="${baseURL}/${id}">${name}</a></h4>
                     <!--Text-->
-                    <p class="card-text">${description}</p>
+                    <p class="card-text" style="overflow: scroll; max-height: 60px">${description}</p>
                     <!--Stars-->
                     <p>
                       <i class="material-icons star">star</i>
