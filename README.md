@@ -70,7 +70,7 @@ This repo includes some files to get you started, but it's up to you to finish t
 - **Admins can remove users**
 ✔  - Admin can remove users through the admin page
 ✔  - When a user is removed, all their reviews are deleted
-  - Admins **cannot** remove other admins (or themselves)
+✔ - Admins **cannot** remove other admins (or themselves)
 
 
 ## Entity Relationship Diagram
