@@ -64,15 +64,17 @@ function pageUpdate() {
   if (window.location.pathname === '/index.html') {
     if (snacksUser) {
       document.querySelector('.carousel').style.display = 'none'
+      document.querySelector('#footer-buttons').style.display = 'none'
       navBar.style.backgroundColor = 'rgb(45, 71, 119)'
     }
     else {
       document.querySelector('.carousel').style.display = 'block'
+      document.querySelector('#footer-buttons').style.display = 'block'
       navBar.style.backgroundColor = ''
     }
   }
   // admin.html
   if (window.location.pathname === '/admin.html') {
-    if (snacksUser.role !== 'admin') document.querySelector('.admin-container').innerHTML = noAccessCard()
+    if (!snacksUser || snacksUser.role !== 'admin') document.querySelector('.admin-container').innerHTML = noAccessCard()
   }
 }

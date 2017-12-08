@@ -32,6 +32,8 @@ function justOneSnack(baseURL, id) {
       let theResult = result.data.response
       //if there is atleast one review for the snack
       if (theResult[0].title !== null) {
+        //populate html with reviews header
+        reviewsContainer.innerHTML = loadReviewHeader()
         //populate html with reviews info card
         let totalSnackRating = 0
         let count = 0
