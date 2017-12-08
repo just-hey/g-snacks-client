@@ -38,13 +38,8 @@ function justOneSnack(baseURL, id) {
         let count = 0
         for (var i = 0; i < theResult.length; i++) {
           let thisSnack = theResult[i]
-<<<<<<< HEAD
-          avgSnackRating += theResult[i].rating
-          // console.log('average!', (avgSnackRating))
-=======
           totalSnackRating += theResult[i].rating
           count++
->>>>>>> upstream/master
           reviewsContainer.innerHTML += loadUserReviews(theResult[i].title, theResult[i].first_name, theResult[i].last_name, theResult[i].text, starMaker(theResult[i].rating))
         }
         //populate snack card info
@@ -98,6 +93,9 @@ function addReview(){
     })
     //LISTEN for save --> route
   })
+
+}
+
 //////////GENERATES AVERAGE RATING FOR THE VIEWONESNACK PAGE
 function avgRating(totalSnackRating, count) {
   return totalSnackRating/count
