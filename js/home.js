@@ -61,6 +61,7 @@ function justOneSnack(baseURL, id) {
       //else there are no reviews for said snack it's rating will be 0!
       else {
         snacksContainer.innerHTML = oneSnackCard(theResult[0].id, theResult[0].name, theResult[0].description, theResult[0].img, starMaker())
+        reviewsContainer.innerHTML = encourageUserReviews(theResult[0].name)
         navBar.classList.add('dark-blue')
         carouselContainer.classList.add('hide')
         footerContainer.classList.add('hide')
