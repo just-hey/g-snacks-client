@@ -73,6 +73,6 @@ function pageUpdate() {
   }
   // admin.html
   if (window.location.pathname === '/admin.html') {
-    if (snacksUser.role !== 'admin') document.querySelector('.admin-container').innerHTML = noAccessCard()
+    if (!snacksUser || snacksUser.role !== 'admin') document.querySelector('.admin-container').innerHTML = noAccessCard()
   }
 }
