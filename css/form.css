@@ -7,10 +7,14 @@
   margin-left: 0.5em;
 }
 
-.edit-form input[type="text"], textarea {
+.edit-form input[type="text"], textarea, input.review-title {
   background-color: #eeeeee!important;
   border: none!important;
   padding: 0.5em;
+}
+
+input.review-title {
+  width: 97%;
 }
 
 .edit-form input {
@@ -27,7 +31,7 @@
   width: 100%;
 }
 
-.save-edit, .save-new, .cancel {
+.save-edit, .save-new, .cancel, .save-review {
   width: 50%;
   height: 4em;
   border: none;
@@ -36,12 +40,12 @@
   transition: 0.5s;
 }
 
-.save-edit, .save-new {
+.save-edit, .save-new, .save-review {
   background-color: #4caf50;
   margin-left: 0.5em;
 }
 
-.save-edit:hover, .save-new:hover {
+.save-edit:hover, .save-new:hover, .save-review:hover {
   background-color: #66bb6a;
 }
 

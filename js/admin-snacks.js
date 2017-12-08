@@ -118,8 +118,6 @@ addSnackButton.addEventListener('click', (e) => {
     let newSnackDescription = document.querySelector('#snack-description').value
     let newSnackImg = document.querySelector('#snack-image').value
 
-    //and pass to route to save
-    // addSnack({newSnackName, newSnackDescription, newSnackImg})
     let body = {
       name:newSnackName, description:newSnackDescription,
       img:newSnackImg}

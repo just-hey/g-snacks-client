@@ -3,7 +3,6 @@ const snacksContainer = document.querySelector('.snack-content')
 const footerContainer = document.querySelector('.page-footer')
 let reviewsContainer = document.querySelector('.reviews-list')
 
-
 //////////LOAD ALL SNACKS
 function loadSnacks(baseURL){
   return axios.get(`${baseURL}/snacks`)
@@ -54,10 +53,12 @@ function justOneSnack(baseURL, id) {
         carouselContainer.classList.add('hide')
         footerContainer.classList.add('hide')
       }
+
+      let snackId = theResult[0].id
+      return snackId
     })
-    .then(result => {
-      //if(snacksUser).. load
-      addReview()
+    .then(snackId => {
+      addReview(snackId)
     })
 
 
@@ -73,7 +74,7 @@ function starMaker(rating = 0) {
 }
 
 /////ADD review
-function addReview(){
+function addReview(snackId){
   //add the review button
 
   //LISTEN for add review click
@@ -94,10 +95,40 @@ function addReview(){
       e.preventDefault()
       reviewButton.classList.remove('hide')
       addReviewContainer.innerHTML = ""
-      //**** need id to get to here
-      //justOneSnack(baseURL, id)
     })
+
     //LISTEN for save --> route
+    let saveReview = document.querySelector('.save-review')
+    saveReview.addEventListener('click', (e) => {
+      e.preventDefault()
+      //grab new review data
+      let newReviewTitle = document.querySelector('.review-title').value
+      let newReviewText = document.querySelector('#review-text').value
+      let submittedStars = document.querySelectorAll('.review-stars .star')
+      //count stars
+      let starCount = 0
+      for (var i = 0; i < submittedStars.length; i++) {
+        if(submittedStars[i].textContent === 'star'){
+          starCount++
+        }
+      }
+
+      let body = {
+        title: newReviewTitle,
+        text: newReviewText,
+        rating: starCount,
+        snack_id: snackId,
+        user_id: snacksUser.id
+      }
+
+      return axios.post(`${baseURL}/reviews`, body)
+      .then(result => {
+        //refresh the page with review
+        let snackId = result.data.response[0].snack_id
+        justOneSnack(baseURL, snackId)
+      })
+    })
+
   })
 
 }
@@ -119,7 +150,6 @@ function listenForStars(){
 
 function countStars(num, limit, firstStar){
   let result = ``
-  console.log(firstStar);
 
   let i = 0
   while(i < num){
