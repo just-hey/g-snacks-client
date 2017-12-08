@@ -60,6 +60,12 @@ function justOneSnack(baseURL, id) {
       return snackId
     })
     .then(snackId => {
+      console.log(snacksUser);
+      if(snacksUser){
+        let reviewButtonSpan = document.querySelector('.snack-review-button')
+        reviewButtonSpan.innerHTML =
+        `<a href="#" class="btn review-button add-review">Leave your own review</a>`
+      }
       return addReview(snackId)
     })
 

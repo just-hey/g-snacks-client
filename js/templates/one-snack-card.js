@@ -25,7 +25,8 @@ function oneSnackCard(id, name, description, img, stars) {
                       <i class="material-icons star">${stars[4]}</i>
                     </p>
                     <!--Button-->
-                    <a href="#" class="btn review-button add-review">Leave your own review</a>
+                    <span class="snack-review-button">
+                    </span>
 
                 </div>
                 <!--/.Post excerpt-->
