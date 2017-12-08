@@ -9,11 +9,6 @@ window.snacksUserToken = null
 
 login()
 
-// If user not logged in, redirect to main page???
-// if (!snacksUserToken && window.location.pathname !== '/index.html') window.location='index.html'
-
-
-
 
 
 
@@ -78,5 +73,6 @@ function pageUpdate() {
   }
   // admin.html
   if (window.location.pathname === '/admin.html') {
+    document.querySelector('.admin-container').innerHTML = noAccessCard()
   }
 }
