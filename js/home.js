@@ -66,7 +66,7 @@ function justOneSnack(baseURL, id) {
         reviewButtonSpan.innerHTML =
         `<a href="#" class="btn review-button add-review">Leave your own review</a>`
       }
-      addReview(snackId)
+      return addReview(snackId)
     })
 
 
@@ -128,8 +128,7 @@ function addReview(snackId){
         snack_id: snackId,
         user_id: snacksUser.id
       }
-
-      return axios.post(`${baseURL}/reviews`, body)
+      return axios.post(`${baseURL}/reviews`, body, { headers: { authorization: `Bearer ${snacksUserToken}` } })
       .then(result => {
         //refresh the page with review
         let snackId = result.data.response[0].snack_id

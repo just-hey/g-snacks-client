@@ -26,6 +26,7 @@ function login() {
       // Set event listener for logout button
       document.querySelector('#nav-logout').addEventListener('click', logout)
       // Run custom updater for page
+      // ******** FIGURE OUT HOW TO REMOVE REVIEW BUTTON ********
       pageUpdate()
     })
   }
