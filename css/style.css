@@ -48,12 +48,13 @@ a {
 }
 
 /* rating stars */
-.one-star, .two-star, .three-star, .four-star, .five-star {
+.review-stars .star {
   cursor: pointer;
 }
 
 .star {
   color: #ffc107;
+  font-size: 2em;
 }
 
 .review-button {

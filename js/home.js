@@ -56,7 +56,7 @@ function justOneSnack(baseURL, id) {
       }
     })
     .then(result => {
-      console.log(result);
+      //if(snacksUser).. load
       addReview()
     })
 
@@ -74,13 +74,19 @@ function starMaker(rating = 0) {
 
 /////ADD review
 function addReview(){
+  //add the review button
+
   //LISTEN for add review click
   let reviewButton = document.querySelector('.review-button')
   let addReview = document.querySelector('.add-review')
+  //
   addReview.addEventListener('click', (e) => {
     reviewButton.classList.add('hide')
     let addReviewContainer = document.querySelector('.add-review-container')
     addReviewContainer.innerHTML = addReviewForm()
+
+    //LISTEN for star clicks
+    listenForStars()
 
     //LISTEN for cancel
     let cancelButton = document.querySelector('.cancel')
@@ -94,6 +100,38 @@ function addReview(){
     //LISTEN for save --> route
   })
 
+}
+
+function listenForStars(){
+  let reviewStarsContainer = document.querySelector('.review-stars')
+  let reviewStars = document.querySelectorAll('.review-stars .star')
+  for (var i = 0; i < reviewStars.length; i++) {
+    reviewStars[i].addEventListener('click', (e) => {
+      let thisStarNum = Number(e.target.getAttribute('data-star'))
+      let firstStar = reviewStars[0]
+      reviewStarsContainer.innerHTML = ""
+      reviewStarsContainer.innerHTML = countStars(thisStarNum, 5, firstStar)
+      //puts the event listeners back on
+      listenForStars()
+    })
+  }
+}
+
+function countStars(num, limit, firstStar){
+  let result = ``
+  console.log(firstStar);
+
+  let i = 0
+  while(i < num){
+    result += `<i class="material-icons star" data-star="${i+1}">star</i>`
+    i++
+  }
+  while(i < limit){
+    result += `<i class="material-icons star" data-star="${i+1}">star_border</i>`
+    i++
+  }
+
+  return result
 }
 
 //////////GENERATES AVERAGE RATING FOR THE VIEWONESNACK PAGE
