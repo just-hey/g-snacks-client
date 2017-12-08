@@ -1,4 +1,4 @@
-function oneSnackCard(id, name, description, img) {
+function oneSnackCard(id, name, description, img, stars) {
   return `<!--First row-->
             <div class="container goHome">
               <a href="index.html">Back</a>
@@ -18,11 +18,11 @@ function oneSnackCard(id, name, description, img) {
                     <p class="my-4">${description}</p>
                     <!--Stars-->
                     <p>
-                      <i class="material-icons star">star</i>
-                      <i class="material-icons star">star</i>
-                      <i class="material-icons star">star</i>
-                      <i class="material-icons star">star_half</i>
-                      <i class="material-icons star">star_border</i>
+                      <i class="material-icons star">${stars[0]}</i>
+                      <i class="material-icons star">${stars[1]}</i>
+                      <i class="material-icons star">${stars[2]}</i>
+                      <i class="material-icons star">${stars[3]}</i>
+                      <i class="material-icons star">${stars[4]}</i>
                     </p>
                     <!--Button-->
                     <a href="#" class="btn review-button add-review">Leave your own review</a>

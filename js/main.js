@@ -9,11 +9,6 @@ window.snacksUserToken = null
 
 login()
 
-// If user not logged in, redirect to main page???
-// if (!snacksUserToken && window.location.pathname !== '/index.html') window.location='index.html'
-
-
-
 
 
 
@@ -60,5 +55,24 @@ function setNavChoices(user) {
   }
   else {
     navChoices.innerHTML = NavLinks.guest()
+  }
+}
+
+// CUSTOM PAGE UPDATER
+function pageUpdate() {
+  // index.html
+  if (window.location.pathname === '/index.html') {
+    if (snacksUser) {
+      document.querySelector('.carousel').style.display = 'none'
+      navBar.style.backgroundColor = 'rgb(45, 71, 119)'
+    }
+    else {
+      document.querySelector('.carousel').style.display = 'block'
+      navBar.style.backgroundColor = 'rgba(45, 71, 119, 0)'
+    }
+  }
+  // admin.html
+  if (window.location.pathname === '/admin.html') {
+    if (snacksUser.role !== 'admin') document.querySelector('.admin-container').innerHTML = noAccessCard()
   }
 }
