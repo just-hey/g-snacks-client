@@ -68,7 +68,7 @@ function pageUpdate() {
     }
     else {
       document.querySelector('.carousel').style.display = 'block'
-      navBar.style.backgroundColor = 'rgba(45, 71, 119, 0)'
+      navBar.style.backgroundColor = ''
     }
   }
   // admin.html
