@@ -64,10 +64,12 @@ function pageUpdate() {
   if (window.location.pathname === '/index.html') {
     if (snacksUser) {
       document.querySelector('.carousel').style.display = 'none'
+      document.querySelector('#footer-buttons').style.display = 'none'
       navBar.style.backgroundColor = 'rgb(45, 71, 119)'
     }
     else {
       document.querySelector('.carousel').style.display = 'block'
+      document.querySelector('#footer-buttons').style.display = 'block'
       navBar.style.backgroundColor = ''
     }
   }
