@@ -72,7 +72,7 @@ function loadAdminSnacks(snacksURL){
                 description: snackDescriptionValue,
                 img: snackImageValue
               }
-              return axios.put(`${snacksURL}/${saveId}`, body)
+              return axios.put(`${snacksURL}/${saveId}`, body, { headers: { authorization: `Bearer ${snacksUserToken}` } })
               .then(result => {
                 console.log(result);
                 adminTable.innerHTML = ""
@@ -123,7 +123,7 @@ addSnackButton.addEventListener('click', (e) => {
     let body = {
       name:newSnackName, description:newSnackDescription,
       img:newSnackImg}
-    return axios.post(`${snacksURL}`, body)
+    return axios.post(`${snacksURL}`, body, { headers: { authorization: `Bearer ${snacksUserToken}` } })
     .then(result => {
       adminTable.innerHTML = ""
       addSnackButton.classList.remove('hide')
@@ -145,7 +145,7 @@ addSnackButton.addEventListener('click', (e) => {
 //////////ADD A SNACK
 // !! also not being used
 function addSnack(body){
-  return axios.post(`${snacksURL}`, body)
+  return axios.post(`${snacksURL}`, body, { headers: { authorization: `Bearer ${snacksUserToken}` } })
   .then(result => {
     console.log(result.data);
   })
@@ -163,7 +163,7 @@ function getOneSnack(id){
 
 //////////DELETE ONE SNACK
 function destroySnack(id){
-  return axios.delete(`${snacksURL}/${id}`)
+  return axios.delete(`${snacksURL}/${id}`, { headers: { authorization: `Bearer ${snacksUserToken}` } })
   .then(result => {
     adminTable.innerHTML = ""
     return loadAdminSnacks(snacksURL)
@@ -174,7 +174,7 @@ function destroySnack(id){
 //////////EDIT ONE SNACK
 //not currently being used !!
 function editSnack(id, body){
-  return axios.put(`${snacksURL}/${id}`, body)
+  return axios.put(`${snacksURL}/${id}`, body, { headers: { authorization: `Bearer ${snacksUserToken}` } })
   .then(result => {
   })
   .catch(err => {console.log(err)})
