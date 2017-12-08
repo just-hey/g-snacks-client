@@ -48,6 +48,10 @@ a {
 }
 
 /* rating stars */
+.one-star, .two-star, .three-star, .four-star, .five-star {
+  cursor: pointer;
+}
+
 .star {
   color: #ffc107;
 }
