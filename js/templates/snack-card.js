@@ -3,7 +3,9 @@ function snackCard(id, name, description, img){
             <!--Card-->
             <div class="card wow fadeIn" data-wow-delay="0.6s">
                 <!--Card image-->
-                <img class="img-fluid" src="${img}" alt="Cinnamon Apple Sticks">
+                <div class="view overlay hm-zoom" style="display: flex; align-items: center; overflow: hidden; height: 180px;">
+                    <img class="img-fluid" src="${img}" alt="Image of snack">
+                </div>
                 <!--Card content-->
                 <div class="card-body text-center">
                     <!--Title-->
