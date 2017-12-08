@@ -85,7 +85,7 @@ function addReview(){
     let addReviewContainer = document.querySelector('.add-review-container')
     addReviewContainer.innerHTML = addReviewForm()
 
-    //LISTEN for stars
+    //LISTEN for star clicks
     listenForStars()
 
     //LISTEN for cancel
@@ -108,15 +108,18 @@ function listenForStars(){
   for (var i = 0; i < reviewStars.length; i++) {
     reviewStars[i].addEventListener('click', (e) => {
       let thisStarNum = Number(e.target.getAttribute('data-star'))
+      let firstStar = reviewStars[0]
       reviewStarsContainer.innerHTML = ""
-      reviewStarsContainer.innerHTML = countStars(thisStarNum, 5)
+      reviewStarsContainer.innerHTML = countStars(thisStarNum, 5, firstStar)
+      //puts the event listeners back on
       listenForStars()
     })
   }
 }
 
-function countStars(num, limit){
+function countStars(num, limit, firstStar){
   let result = ``
+  console.log(firstStar);
 
   let i = 0
   while(i < num){
