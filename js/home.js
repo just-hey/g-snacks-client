@@ -64,12 +64,8 @@ function justOneSnack(baseURL, id) {
       }
     })
     .then(result => {
-      //LISTEN for add review click
-      let reviewButton = document.querySelector('.review-button')
-      reviewButton.addEventListener('click', (e) => {
-        let addReview = document.querySelector('.add-review')
-        addReview.innerHTML = addReviewForm()
-      })
+      console.log(result);
+      addReview()
     })
 
 
@@ -82,4 +78,27 @@ function starMaker(rating) {
     stars[i] = 'star'
   }
   return stars
+}
+
+/////ADD review
+function addReview(){
+  //LISTEN for add review click
+  let reviewButton = document.querySelector('.review-button')
+  let addReview = document.querySelector('.add-review')
+  addReview.addEventListener('click', (e) => {
+    reviewButton.classList.add('hide')
+    let addReviewContainer = document.querySelector('.add-review-container')
+    addReviewContainer.innerHTML = addReviewForm()
+
+    //LISTEN for cancel
+    let cancelButton = document.querySelector('.cancel')
+    cancelButton.addEventListener('click', (e) => {
+      e.preventDefault()
+      reviewButton.classList.remove('hide')
+      addReviewContainer.innerHTML = ""
+      //**** need id to get to here
+      //justOneSnack(baseURL, id)
+    })
+    //LISTEN for save --> route
+  })
 }

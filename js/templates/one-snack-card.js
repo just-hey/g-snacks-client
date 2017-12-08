@@ -25,7 +25,7 @@ function oneSnackCard(id, name, description, img) {
                       <i class="material-icons star">star_border</i>
                     </p>
                     <!--Button-->
-                    <a href="#" class="btn review-button">Leave your own review</a>
+                    <a href="#" class="btn review-button add-review">Leave your own review</a>
 
                 </div>
                 <!--/.Post excerpt-->
@@ -33,7 +33,7 @@ function oneSnackCard(id, name, description, img) {
             <!--/.First row-->
 
             <!--Add Review Container-->
-            <div class="add-review mt-5">
+            <div class="add-review-container mt-4">
             </div>
 
             <!-- REVIEW SECTION -->
