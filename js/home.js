@@ -60,7 +60,7 @@ function justOneSnack(baseURL, id) {
       return snackId
     })
     .then(snackId => {
-      addReview(snackId)
+      return addReview(snackId)
     })
 
 
@@ -122,8 +122,7 @@ function addReview(snackId){
         snack_id: snackId,
         user_id: snacksUser.id
       }
-
-      return axios.post(`${baseURL}/reviews`, body)
+      return axios.post(`${baseURL}/reviews`, body, { headers: { authorization: `Bearer ${snacksUserToken}` } })
       .then(result => {
         //refresh the page with review
         let snackId = result.data.response[0].snack_id
