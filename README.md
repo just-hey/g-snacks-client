@@ -8,29 +8,29 @@ This repository is solely the backend of the project. You will need to build the
 
 This repo includes some files to get you started, but it's up to you to finish these user stories:
 
-- **User can view all snacks (already complete)**
-  - When the user visits the homepage they see a list of all snacks
+✔- **User can view all snacks (already complete)**
+✔  - When the user visits the homepage they see a list of all snacks
 
 
 - **User can view details of an individual snack**
-  - When the user clicks on a snack, display full information about that snack
-  - Display list of reviews for snack
-  - Display average rating of snack
+✔  - When the user clicks on a snack, display full information about that snack
+✔  - Display list of reviews for snack
+✔  - Display average rating of snack
 
 
 - **User can signup a new account (registration)**
-  - Display a form for the user to enter a name, email & password.
-  - Clearly indicate registration success or failure to the user
-  - The same email cannot be registered more than once
+✔  - Display a form for the user to enter a name, email & password.
+✔  - Clearly indicate registration success or failure to the user
+✔  - The same email cannot be registered more than once
 
 
 - **User can login with an existing account (authentication)**
-  - Display a form for the user to enter an email & password.
-  - Clearly indicate login success or failure to the user
+✔  - Display a form for the user to enter an email & password.
+✔  - Clearly indicate login success or failure to the user
 
 
 - **User can post a review of a snack**
-  - Display a form for the user to post a new review for a specific snack
+✔  - Display a form for the user to post a new review for a specific snack
   - If any information is missing when the user submits, surface an error
   - If everything is correct, bring them back to the snack's page to see their review
   - A visual clue should show the user which reviews are there own
@@ -55,21 +55,21 @@ This repo includes some files to get you started, but it's up to you to finish t
   - Hide all buttons the user is not authorized to use
 
 - **Admins can view a special admin dashboard for them**
-  - Add `admin` column to users table
-  - Update seeds to make a new user an admin
-  - When a user logs in and they are an admin, bring them to this page
-  - Users who are not admins are redirected to the home page
+✔  - Add `admin` column to users table
+✔  - Update seeds to make a new user an admin
+✔  - When a user logs in and they are an admin, bring them to this page
+✔  - Users who are not admins are redirected to the home page
 
 
 - **Admins can create, update, and remove snacks**
-  - Admin can add new snacks through this admin page
-  - Admin can remove existing snacks through this admin page
-  - Admin can edit existing snacks through this admin page
+✔  - Admin can add new snacks through this admin page
+✔  - Admin can remove existing snacks through this admin page
+✔  - Admin can edit existing snacks through this admin page
 
 
 - **Admins can remove users**
-  - Admin can remove users through the admin page
-  - When a user is removed, all their reviews are deleted
+✔  - Admin can remove users through the admin page
+✔  - When a user is removed, all their reviews are deleted
   - Admins **cannot** remove other admins (or themselves)
 
 
