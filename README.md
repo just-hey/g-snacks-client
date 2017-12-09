@@ -32,7 +32,7 @@ This repo includes some files to get you started, but it's up to you to finish t
 - **User can post a review of a snack**
 ✔  - Display a form for the user to post a new review for a specific snack
   - If any information is missing when the user submits, surface an error
-  - If everything is correct, bring them back to the snack's page to see their review
+✔  - If everything is correct, bring them back to the snack's page to see their review
   - A visual clue should show the user which reviews are there own
   - Users may not post more than one review per snack
 
@@ -40,19 +40,19 @@ This repo includes some files to get you started, but it's up to you to finish t
   - Display a form for the user to edit a review for a specific snack
   - Pre-fill form with current review data
   - If any information is missing when the user submits, surface an error
-  - User **cannot** edit other users reviews
+✔  - User **cannot** edit other users reviews
 
 
 - **User can delete their own review of a snack**
   - Provide option to delete a users own review for a specific snack
-  - User **cannot** delete other users reviews
+✔  - User **cannot** delete other users reviews
 
 
 ## Stretch
 
 - **Unauthenticated users do not see forms and fields they cannot use**
-  - Hide the review form if a user is not logged-in
-  - Hide all buttons the user is not authorized to use
+✔  - Hide the review form if a user is not logged-in
+✔  - Hide all buttons the user is not authorized to use
 
 - **Admins can view a special admin dashboard for them**
 ✔  - Add `admin` column to users table
