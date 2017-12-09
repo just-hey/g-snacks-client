@@ -131,6 +131,14 @@ function addReview(snackId){
         let snackId = result.data.response[0].snack_id
         justOneSnack(baseURL, snackId)
       })
+      .catch(error => {
+        let reviewErrorMessage = document.querySelector('.review-error-message')
+
+        reviewErrorMessage.innerHTML =
+        `<div class="alert alert-danger mt-3" role="alert">
+          ${error.response.data.message}
+        </div>`
+      })
     })
 
   })

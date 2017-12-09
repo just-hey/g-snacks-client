@@ -11,5 +11,7 @@ function addSnackForm(){
       <button class="cancel">Cancel</button>
       <button class="save-new">Create Snack</button>
     </div>
+    <div class="snack-error-message">
+    </div>
   </div>`
 }

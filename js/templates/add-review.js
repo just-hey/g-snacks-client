@@ -14,5 +14,7 @@ function addReviewForm(){
       <button class="cancel">Cancel</button>
       <button class="save-review">Save Review</button>
     </div>
+    <div class="review-error-message">
+    </div>
   </form>`
 }

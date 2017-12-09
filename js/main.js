@@ -1,7 +1,7 @@
 // Connect to Heroku server
-window.baseURL = 'https://gsnacks67.herokuapp.com/api'
+// window.baseURL = 'https://gsnacks67.herokuapp.com/api'
 // Connect to local server
-// window.baseURL = 'http://localhost:3000/api'
+window.baseURL = 'http://localhost:3000/api'
 
 window.navBar = document.querySelector('.navbar')
 window.snacksUser = null

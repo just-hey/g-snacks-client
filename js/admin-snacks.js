@@ -127,7 +127,14 @@ addSnackButton.addEventListener('click', (e) => {
       addSnackButton.classList.remove('hide')
       loadAdminSnacks(snacksURL)
     })
-    .catch((err) => {console.log(err)})
+    .catch(error => {
+      let snackErrorMessage = document.querySelector('.snack-error-message')
+
+      snackErrorMessage.innerHTML =
+      `<div class="alert alert-danger mt-3" role="alert">
+        ${error.response.data.message}
+      </div>`
+    })
 
   })
 
