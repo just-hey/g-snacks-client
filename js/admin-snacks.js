@@ -1,4 +1,4 @@
-const snacksURL = `${baseURL}/api/snacks`
+const snacksURL = `${baseURL}/snacks`
 let addSnackButton = document.querySelector('.add-snack')
 
 function snackRow(id, name){
