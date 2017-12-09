@@ -14,6 +14,7 @@ function loadSnacks(baseURL){
         for (let i = 0; i < snackLinks.length; i++) {
           snackCardContainer[i].addEventListener('click', (e) => {
             e.preventDefault()
+            window.scrollTo(0,0)
             let snackID = e.target.getAttribute('data-id')
             let thisSnack = result.data.response
             justOneSnack(baseURL, thisSnack[i].id)
