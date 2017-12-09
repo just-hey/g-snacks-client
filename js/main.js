@@ -26,7 +26,6 @@ function login() {
       // Set event listener for logout button
       document.querySelector('#nav-logout').addEventListener('click', logout)
       // Run custom updater for page
-      // ******** FIGURE OUT HOW TO REMOVE REVIEW BUTTON ********
       pageUpdate()
     })
   }
@@ -67,11 +66,15 @@ function pageUpdate() {
       document.querySelector('.carousel').style.display = 'none'
       document.querySelector('#footer-buttons').style.display = 'none'
       navBar.style.backgroundColor = 'rgb(45, 71, 119)'
+      // ugly workaround to toggle review button if user logs in/out on the one snack page
+      if (document.querySelector('.snack-review-button')) document.querySelector('.snack-review-button').style.display = 'block'
     }
     else {
       document.querySelector('.carousel').style.display = 'block'
       document.querySelector('#footer-buttons').style.display = 'block'
       navBar.style.backgroundColor = ''
+      // ugly workaround to toggle review button if user logs in/out on the one snack page
+      if (document.querySelector('.snack-review-button')) document.querySelector('.snack-review-button').style.display = 'none'
     }
   }
   // admin.html

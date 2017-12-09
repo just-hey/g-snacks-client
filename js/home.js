@@ -45,28 +45,22 @@ function justOneSnack(baseURL, id) {
         }
         //populate snack card info
         let avgSnackRating = avgRating(totalSnackRating, count)
-        snacksContainer.innerHTML = oneSnackCard(theResult[0].id, theResult[0].name, theResult[0].description, theResult[0].img, starMaker(avgSnackRating))
+        snacksContainer.innerHTML = oneSnackCard(theResult[0].snack_id, theResult[0].name, theResult[0].description, theResult[0].img, starMaker(avgSnackRating))
       }
       //else there are no reviews for said snack it's rating will be 0!
       else {
-        snacksContainer.innerHTML = oneSnackCard(theResult[0].id, theResult[0].name, theResult[0].description, theResult[0].img, starMaker())
+        snacksContainer.innerHTML = oneSnackCard(theResult[0].snack_id, theResult[0].name, theResult[0].description, theResult[0].img, starMaker())
         reviewsContainer.innerHTML = encourageUserReviews(theResult[0].name)
         navBar.classList.add('dark-blue')
         carouselContainer.classList.add('hide')
         footerContainer.classList.add('hide')
       }
 
-      let snackId = theResult[0].id
+      let snackId = theResult[0].snack_id
       return snackId
     })
     .then(snackId => {
-      console.log(snacksUser);
-      if(snacksUser){
-        let reviewButtonSpan = document.querySelector('.snack-review-button')
-        reviewButtonSpan.innerHTML =
-        `<a href="#" class="btn review-button add-review">Leave your own review</a>`
-      }
-      return addReview(snackId)
+      if(snacksUser) return addReview(snackId)
     })
 
 
@@ -84,7 +78,9 @@ function starMaker(rating = 0) {
 /////ADD review
 function addReview(snackId){
   //add the review button
-
+  let reviewButtonSpan = document.querySelector('.snack-review-button')
+  reviewButtonSpan.innerHTML =
+  `<a href="#" class="btn review-button add-review">Leave your own review</a>`
   //LISTEN for add review click
   let reviewButton = document.querySelector('.review-button')
   let addReview = document.querySelector('.add-review')
