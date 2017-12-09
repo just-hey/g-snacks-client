@@ -3,7 +3,7 @@ function oneSnackCard(id, name, description, img, stars) {
             <div class="container goHome">
               <a href="index.html">Back</a>
             </div>
-            <div class="row one-snack-container wow fadeIn" data-wow-delay="0.2s">
+            <div class="row one-snack-container wow fadeIn" data-id="${id}" data-wow-delay="0.2s">
                 <!--Featured image-->
                 <div class="col-lg-7">
                     <div class="view overlay hm-white-light z-depth-1-half">
