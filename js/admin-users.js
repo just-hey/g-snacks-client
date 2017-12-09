@@ -1,4 +1,4 @@
-const usersURL = `${baseURL}api/users`
+const usersURL = `${baseURL}/api/users`
 
 function userRow(id, firstName, lastName, role){
   return   `<tr data-id="${id}">
