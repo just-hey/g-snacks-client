@@ -38,7 +38,7 @@ function justOneSnack(baseURL, id) {
         //populate html with reviews info card
         let totalSnackRating = 0
         let count = 0
-        for (var i = 0; i < theResult.length; i++) {
+        for (var i = theResult.length -1; i >= 0 ; i--) {
           let thisSnack = theResult[i]
           totalSnackRating += theResult[i].rating
           count++
