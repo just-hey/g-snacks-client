@@ -268,7 +268,7 @@ function addOptionToLogin(snackId){
     //refresh the page with review (give server a chance to verify user)
     setTimeout(() => {
       justOneSnack(baseURL, snackId)
-    }, 1000)
+    }, 1500)
   })
 }
 
