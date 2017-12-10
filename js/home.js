@@ -31,13 +31,15 @@ function justOneSnack(baseURL, id) {
   return axios.get(`${baseURL}/snacks/${id}/reviews`)
     .then(result => {
       let theResult = result.data.response
+      //variables to hold reviews
+      const thisUsersReview = []
+      const othersReviews = []
+      let userHasReview = false //hold status for if this user has already left a review
       //if there is atleast one review for the snack
       if (theResult[0].title !== null) {
         //separate reviews into this user and others
-        const thisUsersReview = []
-        const othersReviews = []
         theResult.forEach(result => {
-          if (result.user_id === snacksUser.id) thisUsersReview.push(result)
+          if (snacksUser && result.user_id === snacksUser.id) thisUsersReview.push(result)
           else othersReviews.push(result)
         })
         //make sure reviewsContainer is empty
@@ -47,6 +49,7 @@ function justOneSnack(baseURL, id) {
         let count = 0
         //if this user review, populate it in top section
         if (thisUsersReview.length > 0) {
+          userHasReview = true
           reviewsContainer.innerHTML = loadUserReviewHeader()
           // let thisSnack = othersReviews[i]
           totalSnackRating += thisUsersReview[0].rating
@@ -76,15 +79,12 @@ function justOneSnack(baseURL, id) {
         carouselContainer.classList.add('hide')
         footerContainer.classList.add('hide')
       }
-
+      //add review button
       let snackId = theResult[0].snack_id
-      return snackId
+      if (snacksUser && userHasReview) return addOptionToUpdateReview(thisUsersReview[0])
+      else if (snacksUser) return addOptionToReview(snackId)
+      else return addOptionToLogin(snackId)
     })
-    .then(snackId => {
-      if(snacksUser) return addReview(snackId)
-    })
-
-
 }
 
 //////////CREATES STARS TO DROP INTO REVIEWS
@@ -97,7 +97,7 @@ function starMaker(rating = 0) {
 }
 
 /////ADD review
-function addReview(snackId){
+function addOptionToReview(snackId){
   //add the review button
   let reviewButtonSpan = document.querySelector('.snack-review-button')
   reviewButtonSpan.innerHTML =
@@ -163,6 +163,113 @@ function addReview(snackId){
 
   })
 
+}
+
+/////EDIT & DELETE review
+function addOptionToUpdateReview(currentReview){
+  //add the review and delete buttons
+  let reviewButtonSpan = document.querySelector('.snack-review-button')
+  reviewButtonSpan.innerHTML = `
+    <a class="btn review-button" id="update-review">Update your review</a>
+    <a class="btn review-button" id="delete-review">Delete your review</a>
+    `
+  let reviewId = currentReview.review_id
+  let snackId = currentReview.snack_id
+
+  //LISTEN for update review click
+  let updateReview = document.querySelector('#update-review')
+  
+  updateReview.addEventListener('click', (e) => {
+    let updateReviewContainer = document.querySelector('.add-review-container')
+    updateReviewContainer.innerHTML = addReviewForm()
+    //POPULATE review form
+    document.querySelector('.review-title').value = currentReview.title
+    document.querySelector('#review-text').value = currentReview.text
+    let submittedStars = document.querySelectorAll('.review-stars .star')
+    for (let i = 0; i < currentReview.rating; i++) {
+      submittedStars[i].innerText = 'star'
+    }
+    //LISTEN for star clicks
+    listenForStars()
+
+    //LISTEN for cancel
+    let cancelButton = document.querySelector('.cancel')
+    cancelButton.addEventListener('click', (e) => {
+      e.preventDefault()
+      updateReviewContainer.innerHTML = ""
+    })
+
+    //LISTEN for save --> route
+    let saveReview = document.querySelector('.save-review')
+    saveReview.addEventListener('click', (e) => {
+      e.preventDefault()
+      //grab new review data
+      let newReviewTitle = document.querySelector('.review-title').value
+      let newReviewText = document.querySelector('#review-text').value
+      submittedStars = document.querySelectorAll('.review-stars .star')
+      //count stars
+      let starCount = 0
+      for (var i = 0; i < submittedStars.length; i++) {
+        if(submittedStars[i].textContent === 'star'){
+          starCount++
+        }
+      }
+      //create update body
+      let body = {}
+      if (newReviewTitle.length > 0) body.title = newReviewTitle
+      if (newReviewText.length > 0) body.text = newReviewText
+      if (starCount > 0) body.rating = starCount
+      //send put request to server
+      return axios.put(`${baseURL}/reviews/${reviewId}`, body, { headers: { authorization: `Bearer ${snacksUserToken}` } })
+      .then(result => {
+        //refresh the page with review
+        justOneSnack(baseURL, snackId)
+      })
+      .catch(error => {
+        let reviewErrorMessage = document.querySelector('.review-error-message')
+
+        reviewErrorMessage.innerHTML =
+        `<div class="alert alert-danger mt-3" role="alert">
+          ${error.response.data.message}
+        </div>`
+      })
+    })
+  })
+
+  //LISTEN for delete review click
+  let deleteReview = document.querySelector('#delete-review')
+  
+  deleteReview.addEventListener('click', (e) => {
+    //send delete request to server
+    return axios.delete(`${baseURL}/reviews/${reviewId}`, { headers: { authorization: `Bearer ${snacksUserToken}` } })
+    .then(result => {
+      //refresh the page
+      justOneSnack(baseURL, snackId)
+    })
+    .catch(error => {
+      let reviewErrorMessage = document.querySelector('.review-error-message')
+
+      reviewErrorMessage.innerHTML =
+      `<div class="alert alert-danger mt-3" role="alert">
+        ${error.response.data.message}
+      </div>`
+    })
+  })
+}
+
+/////LOGIN to be able to review
+function addOptionToLogin(snackId){
+  //add the login button
+  let reviewButtonSpan = document.querySelector('.snack-review-button')
+  reviewButtonSpan.innerHTML =
+  `<a class="btn review-button" id="login-review" data-toggle="modal" data-target="#loginModal">Login to leave a review</a>`
+  //LISTEN for login click
+  loginButton.addEventListener('click', (e) => {
+    //refresh the page with review (give server a chance to verify user)
+    setTimeout(() => {
+      justOneSnack(baseURL, snackId)
+    }, 1000)
+  })
 }
 
 function listenForStars(){
