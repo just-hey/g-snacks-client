@@ -12,9 +12,9 @@ of jQuery. Axios is used for sending requests to the server.
 ## Screenshots
 
 ![](img/screenshots/wireframe.jpg)
-![](screenshots/screenshot-1.jpg)
-![](screenshots/screenshot-2.jpg)
-![](screenshots/screenshot-3.jpg)
+![](img/screenshots/screenshot-1.jpg)
+![](img/screenshots/screenshot-2.jpg)
+![](img/screenshots/screenshot-3.jpg)
 
 ## Installation
 No installation on the client side is required.
