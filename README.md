@@ -31,20 +31,20 @@ This repo includes some files to get you started, but it's up to you to finish t
 
 - **User can post a review of a snack**
 ✔  - Display a form for the user to post a new review for a specific snack
-  - If any information is missing when the user submits, surface an error
+✔  - If any information is missing when the user submits, surface an error
 ✔  - If everything is correct, bring them back to the snack's page to see their review
-  - A visual clue should show the user which reviews are there own
-  - Users may not post more than one review per snack
+✔  - A visual clue should show the user which reviews are there own
+✔  - Users may not post more than one review per snack
 
 - **User can edit their own review of a snack**
-  - Display a form for the user to edit a review for a specific snack
-  - Pre-fill form with current review data
+✔  - Display a form for the user to edit a review for a specific snack
+✔  - Pre-fill form with current review data
   - If any information is missing when the user submits, surface an error
 ✔  - User **cannot** edit other users reviews
 
 
 - **User can delete their own review of a snack**
-  - Provide option to delete a users own review for a specific snack
+✔  - Provide option to delete a users own review for a specific snack
 ✔  - User **cannot** delete other users reviews
 
 
