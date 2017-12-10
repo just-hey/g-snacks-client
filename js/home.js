@@ -33,16 +33,36 @@ function justOneSnack(baseURL, id) {
       let theResult = result.data.response
       //if there is atleast one review for the snack
       if (theResult[0].title !== null) {
-        //populate html with reviews header
-        reviewsContainer.innerHTML = loadReviewHeader()
-        //populate html with reviews info card
+        //separate reviews into this user and others
+        const thisUsersReview = []
+        const othersReviews = []
+        theResult.forEach(result => {
+          if (result.user_id === snacksUser.id) thisUsersReview.push(result)
+          else othersReviews.push(result)
+        })
+        //make sure reviewsContainer is empty
+        reviewsContainer.innerHTML = ''
+        //initialize snack ratings counts
         let totalSnackRating = 0
         let count = 0
-        for (var i = theResult.length -1; i >= 0 ; i--) {
-          let thisSnack = theResult[i]
-          totalSnackRating += theResult[i].rating
+        //if this user review, populate it in top section
+        if (thisUsersReview.length > 0) {
+          reviewsContainer.innerHTML = loadUserReviewHeader()
+          // let thisSnack = othersReviews[i]
+          totalSnackRating += thisUsersReview[0].rating
           count++
-          reviewsContainer.innerHTML += loadUserReviews(theResult[i].title, theResult[i].first_name, theResult[i].last_name, theResult[i].text, starMaker(theResult[i].rating))
+          reviewsContainer.innerHTML += loadUserReviews(thisUsersReview[0].title, thisUsersReview[0].first_name, thisUsersReview[0].last_name, thisUsersReview[0].text, starMaker(thisUsersReview[0].rating))
+        }
+        //populate html with other reviews (if present)
+        if (othersReviews.length > 0) {
+          reviewsContainer.innerHTML += loadReviewHeader()
+          //populate html with reviews info card
+          for (var i = othersReviews.length -1; i >= 0 ; i--) {
+            // let thisSnack = othersReviews[i]
+            totalSnackRating += othersReviews[i].rating
+            count++
+            reviewsContainer.innerHTML += loadUserReviews(othersReviews[i].title, othersReviews[i].first_name, othersReviews[i].last_name, othersReviews[i].text, starMaker(othersReviews[i].rating))
+          }
         }
         //populate snack card info
         let avgSnackRating = avgRating(totalSnackRating, count)

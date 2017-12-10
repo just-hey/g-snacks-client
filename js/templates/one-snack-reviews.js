@@ -4,6 +4,12 @@ function loadReviewHeader() {
   `
 }
 
+function loadUserReviewHeader() {
+  return `
+  <h4 class="mb-3">WHAT YOUR TASTEBUDS SAY:</h4>
+`
+}
+
 function loadUserReviews(title, first_name, last_name, text, stars) {
   return   `<h5>${title}</h5>
             <p>${text}

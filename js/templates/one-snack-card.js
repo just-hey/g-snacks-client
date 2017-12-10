@@ -6,8 +6,8 @@ function oneSnackCard(id, name, description, img, stars) {
             <div class="row one-snack-container wow fadeIn" data-id="${id}" data-wow-delay="0.2s">
                 <!--Featured image-->
                 <div class="col-lg-7">
-                    <div class="view overlay hm-white-light z-depth-1-half">
-                        <img class="one-snack-img" src="${img}" class="img-fluid" alt="">
+                    <div class="view overlay hm-white-light z-depth-1-half" style="max-height: 400px; overflow: hidden; display: flex; align-items: center;">
+                        <img class="one-snack-img" src="${img}" class="img-fluid" alt="Image of snack">
                         <div class="mask"></div>
                     </div>
                 </div>
