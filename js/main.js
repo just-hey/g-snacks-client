@@ -7,7 +7,7 @@ window.navBar = document.querySelector('.navbar')
 window.snacksUser = null
 window.snacksUserToken = null
 
-login()
+setTimeout(() => login(), 1000)
 
 
 
