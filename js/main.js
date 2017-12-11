@@ -15,7 +15,9 @@ login()
 // HELPER FUNCTIONS
 function login() {
   // Check for currently logged in user
-  snacksUserToken = localStorage.getItem('snacksUserToken')
+  // snacksUserToken = localStorage.getItem('snacksUserToken')
+  localStorage.getItem('snacksUserToken')
+  .then(result => snacksUserToken = result)
   // If user is logged in, get their user data
   if (snacksUserToken) {
     axios.get(`${baseURL}/users/fromToken`, { headers: { authorization: `Bearer ${snacksUserToken}` } })
