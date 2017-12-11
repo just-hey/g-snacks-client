@@ -61,7 +61,7 @@ function setNavChoices(user) {
 // CUSTOM PAGE UPDATER
 function pageUpdate() {
   // index.html
-  if (window.location.pathname === '/index.html' || window.location.pathname === '') {
+  if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
     if (snacksUser) {
       document.querySelector('.carousel').style.display = 'none'
       document.querySelector('#footer-buttons').style.display = 'none'
