@@ -4,7 +4,7 @@ function editSnackForm(id, name, description, img){
     <label for="snack-name">Name</label>
     <input type="text" name="snack-name" id="snack-name" value="${name}" class="mb-4"></input>
     <label for="snack-description">Description</label>
-    <textarea name="snack-description" id="snack-description" class="mb-4" style="height: 150px; overflow: scroll;">${description}</textarea>
+    <textarea name="snack-description" id="snack-description" class="mb-4">${description}</textarea>
     <label for="snack-image">Image URL</label>
     <input type="text" name="snack-image" id="snack-image" value="${img}" class="mb-4"></input>
     <div class="save-cancel-buttons mt-4">
