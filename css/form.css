@@ -21,9 +21,10 @@ input.review-title {
   width: 98%!important;
 }
 
-.edit-form textarea {
+#snack-description,
+#review-text {
   width: 100%;
-  height: 6em!important;
+  height: 8rem!important;
 }
 
 .save-cancel-buttons {
